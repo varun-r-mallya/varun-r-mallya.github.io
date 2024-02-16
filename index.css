@@ -205,7 +205,6 @@ footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    animation: slideIn 1s ease-in-out forwards;
 }
 
 .timeline-event {
@@ -236,15 +235,6 @@ footer {
     text-align: center;
     font-size: 2rem;
     color: #888;
-}
-
-@keyframes slideIn {
-    0% {
-        transform: translateX(100%)
-    }
-    100% {
-        transform: translateX(0);
-    }
 }
 
 @media (max-width: 900px) {
