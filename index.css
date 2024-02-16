@@ -5,7 +5,7 @@ html {
 body{
     background-color: black;
     color: white;
-    cursor: url('./assets/cursor.png'),auto; 
+    cursor: url('./cursor.png'),auto; 
     /* TODO: ask how to add the above cursor properly and why its not getting */
 }
 
