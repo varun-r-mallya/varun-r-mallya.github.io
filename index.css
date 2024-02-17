@@ -1,12 +1,11 @@
 html {
     scroll-behavior: smooth;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='31' fill='none' viewBox='0 0 26 31'%3E%3Cpath fill='%23fff' fill-rule='evenodd' stroke='%23010101' stroke-linecap='square' stroke-width='2.5' d='M21.993 14.425 2.549 2.935l4.444 23.108 4.653-10.002 10.347-1.616Z' clip-rule='evenodd'/%3E%3C/svg%3E"),auto;
 }
 
 body{
     background-color: black;
     color: white;
-    cursor: url('./cursor.png'),auto; 
-    /* TODO: ask how to add the above cursor properly and why its not getting */
 }
 
 header{
@@ -21,6 +20,7 @@ header{
     z-index: 9999;
     height:fit-content;
     gap:1%;
+    top: 0;
 }
 
 header > a{
@@ -47,9 +47,9 @@ header > a:hover{
 
 #wrapper_first_div{
     display: flex;
-    height: 100vh;
     justify-content: center;
     flex-direction: row;
+    height: 100vh;
 }
 
 #first_div{
@@ -57,6 +57,7 @@ header > a:hover{
     justify-content:center;
     flex-direction: column;
     text-align: center;
+
 }
 
 #first_div > h1{
@@ -145,6 +146,7 @@ header > a:hover{
     font-weight: 300;
     font-style: normal;
     background-color: rgba(14, 217, 253, 0.5);
+    height: fit-content;
 }
 
 #the_journey_box{
@@ -168,6 +170,7 @@ footer {
     color: rgb(0, 0, 0);
     padding: 20px 0;
     text-align: center;
+    bottom: 0;
   }
 
   .wrapper_footer{
@@ -242,7 +245,7 @@ footer {
 @media (max-width: 900px) {
     .timeline-event {
         width: 70vw;
-        padding: 10%;
+        padding: 7%;
     }
 }
 
