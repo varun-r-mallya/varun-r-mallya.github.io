@@ -10,43 +10,6 @@ body{
     color: white;
 }
 
-header{
-    display: flex;
-    font-family: "Roboto", sans-serif;
-    font-weight: 100;
-    font-style: normal;
-    font-size: 0.5em;
-    height: 3vw;
-    width: 100%;
-    position: fixed;
-    z-index: 9999;
-    height:fit-content;
-    gap:1%;
-    top: 0;
-}
-
-header > a{
-    font-family: "Roboto", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-    font-size: 1rem;
-    background-color: rgb(43, 42, 42);
-    color: rgb(211, 211, 211);
-    border-color: transparent;
-    position:left;
-    text-decoration: none;
-    padding: 2ch;
-    text-align: center;
-    border-radius: 5%;
-    justify-self: end;
-    
-
-}
-
-header > a:hover{
-    background-color: rgb(150, 140, 140);
-}
-
 #wrapper_first_div{
     display: flex;
     justify-content: center;
@@ -79,6 +42,24 @@ header > a:hover{
     font-style: normal;
     margin-top: 0%;
     font-size: 2em;
+    overflow: hidden; 
+    border-right: .15em solid orange;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: .15em;
+    animation: 
+      typing 3.5s steps(40, end),
+      blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
 }
 
 #about_me{
@@ -134,12 +115,13 @@ header > a:hover{
     font-size: 1.5em;
     width: inherit;
     padding: 2%;
+    left: 0;
 }
 
 @media (max-width: 900px) {
     .elements{
         height: fit-content;
-        padding: 25vw;
+        padding: 6%;
     }
 }
 #about_me_box{
@@ -149,6 +131,12 @@ header > a:hover{
     font-style: normal;
     background-color: rgba(14, 217, 253, 0.5);
     height: fit-content;
+    left: 0;
+}
+
+#about_me_box > p{
+    width: 112cw; 
+    text-align: center;
 }
 
 #the_journey_box{
@@ -165,6 +153,10 @@ header > a:hover{
     background-color: rgba(109, 35, 228, 0.5);
     height: fit-content;
     padding-bottom: 5vw;
+}
+#contact_me > h2{
+    width: 10ch; 
+    margin: 0% 5% 10% 5%;
 }
 
 footer {
@@ -239,12 +231,13 @@ footer {
     margin-top: 5vw;
     text-align: center;
     font-size: 2.5rem;
+    color: white;
 }
 
 .description_journey {
     text-align: center;
     font-size: 2rem;
-    color: #888;
+    color: white;
 }
 
 @media (max-width: 900px) {
@@ -275,7 +268,7 @@ footer {
   
   .project-widget {
     position: relative;
-    background-color: #bfe225;
+    background-color: #48ad8c;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 2vw;
@@ -310,7 +303,7 @@ footer {
     top: 100%;
     left: 0;
     width: 17vw;
-    background-color: #09ffde;
+    background-color: #e1b7ee;
     padding: 2vw;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -318,6 +311,7 @@ footer {
     visibility: hidden;
     transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
     z-index: 9999;
+    font-weight: 300;
   }
   
   .project-widget:hover .hover-overlay {
@@ -335,13 +329,14 @@ footer {
     border-radius: 5px; 
     padding: 5%;
     text-decoration: none;
+    font-weight: 200;
   }
 
 
   
   .hover-overlay img {
-    width: 2vw;
-    height: 2vw;
+    width: 12%;
+    height: fit-content;
     margin-right: 1vw;
   }
 
@@ -412,3 +407,73 @@ footer {
 }
 }
 
+.header a{
+    text-decoration: none;
+  }
+.header ul{
+    list-style: none;
+}
+
+.header {
+  background-color: black;
+  box-shadow: 1% 1% 5% 0% grey;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  left: 0;
+  height: 7vh; 
+  align-items: center;
+  z-index: 99999;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  display: inline-block;
+  color: white;
+  font-size: 2vw;
+  font-family: "Protest Guerrilla", sans-serif;
+  font-weight: 400;
+  margin-left: 1em;
+}
+
+.logo:hover {
+  color: #25dce2;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2%;
+  margin-right: 5%;
+}
+
+.menu li {
+  display: inline-block;
+  margin: 1vw 1vw;
+  font-size: 1.1rem; 
+  color: rgb(255, 255, 255);
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 200;
+  width: fit-content;
+  padding: 1%;
+  border-radius: 5%;
+}
+.menu li a {
+  text-decoration: none;
+  color: white;
+}
+.menu li:hover {
+  background-color: #272726;
+  color: #09ffde;
+}
+
+@media (max-width: 900px) {
+  .menu li {
+    font-size: 4vw;
+  }
+  .logo{
+    font-size: 4vw;
+  }
+}
