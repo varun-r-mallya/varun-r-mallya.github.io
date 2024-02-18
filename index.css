@@ -191,8 +191,25 @@ footer {
   }
   
   .copyright {
-    font-size: 14px;
+    font-size: 1.4rem;
     margin-bottom: 1%;
+  }
+
+  .heart{
+    font-size: 1rem;
+    animation: heartbeat 0.75s infinite;
+  }
+
+  @keyframes heartbeat {
+    0%{
+      font-size: x-small;
+    }
+    50%{
+      font-size: large;
+    }
+    100%{
+      font-size: x-small;
+    }
   }
 
 .journey-timeline {
