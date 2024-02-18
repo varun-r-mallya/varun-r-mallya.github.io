@@ -195,20 +195,38 @@ footer {
     margin-bottom: 1%;
   }
 
+  @media (max-width: 900px) {
+    .copyright{
+      font-size: 0.8rem;
+      padding: 2%;
+    }
+    @keyframes heartbeat {
+      0%{
+        font-size: 0.2rem;
+      }
+      50%{
+        font-size: 0.5rem;
+      }
+      100%{
+        font-size: 0.2rem;
+      }
+    }
+  }
+
   .heart{
-    font-size: 1rem;
+    font-size: 0.5rem;
     animation: heartbeat 0.75s infinite;
   }
 
   @keyframes heartbeat {
     0%{
-      font-size: x-small;
+      font-size: 0.2rem;
     }
     50%{
-      font-size: large;
+      font-size: 0.8rem;
     }
     100%{
-      font-size: x-small;
+      font-size: 0.2rem;
     }
   }
 
