@@ -132,6 +132,11 @@ body{
     left: 0;
 }
 
+#about_me_box > p{
+    width: 112cw; 
+    text-align: center;
+}
+
 #the_journey_box{
     background-color:  rgba(35, 228, 115, 0.5);
     height: fit-content;
@@ -146,6 +151,10 @@ body{
     background-color: rgba(109, 35, 228, 0.5);
     height: fit-content;
     padding-bottom: 5vw;
+}
+#contact_me > h2{
+    width: 10ch; 
+    margin: 0% 5% 10% 5%;
 }
 
 footer {
@@ -217,12 +226,13 @@ footer {
     margin-top: 5vw;
     text-align: center;
     font-size: 2.5rem;
+    color: white;
 }
 
 .description_journey {
     text-align: center;
     font-size: 2rem;
-    color: #888;
+    color: white;
 }
 
 @media (max-width: 900px) {
