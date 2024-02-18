@@ -227,7 +227,7 @@ footer {
 
 .timeline-event {
     background: #fff;
-    border-radius: 5px;
+    border-radius: 1%;
     padding: 2%;
     margin: 2%;
     box-shadow: 0 2% 5% rgba(0, 0, 0, 0.1);
@@ -286,8 +286,8 @@ footer {
   .project-widget {
     position: relative;
     background-color: #48ad8c;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 1%;
+    box-shadow: 0 2% 5% rgba(0, 0, 0, 0.1);
     padding: 2vw;
     transition: transform 0.2s ease-in-out;
     width: 20%;
@@ -298,7 +298,7 @@ footer {
     height: 15vw;
     width: 15vw;
     object-fit:contain;
-    border-radius: 5px;
+    border-radius: 1%;
   }
   
   .project-widget h3 {
@@ -311,8 +311,9 @@ footer {
     font-size: 1em;
     text-align: center;
     line-height: 1.5;
-    color: #666;
+    color: #ffffff;
     width: 100%;
+    font-weight: 100;
   }
   
   .hover-overlay {
@@ -320,10 +321,10 @@ footer {
     top: 100%;
     left: 0;
     width: 17vw;
-    background-color: #e1b7ee;
+    background-color: #c66fe0;
     padding: 2vw;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 1%;
+    box-shadow: 0 2% 5% rgba(0, 0, 0, 0.1);
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
@@ -343,7 +344,7 @@ footer {
     background-color: grey; 
     color: white; 
     width: fit-content; 
-    border-radius: 5px; 
+    border-radius: 1%; 
     padding: 5%;
     text-decoration: none;
     font-weight: 200;
@@ -389,7 +390,7 @@ footer {
   padding: 1vw;
   margin-bottom: 1vw;
   border: none;
-  border-radius: 5px;
+  border-radius: 1%;
   height: fit-content;
 }
 
@@ -402,7 +403,7 @@ footer {
   background-color: #bfe225;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 1%;
   cursor: pointer;
 }
 
