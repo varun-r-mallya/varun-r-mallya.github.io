@@ -489,7 +489,7 @@ footer {
 
 @media (max-width: 900px) {
   .menu li {
-    font-size: 4vw;
+    font-size: 1rem;
   }
   .logo{
     font-size: 4vw;
