@@ -1,6 +1,6 @@
 ## This is the source code for my portfolio site
 
-###Run this site by running:
+##Run this site by running:
 1. <code> git clone https://github.com/varun-r-mallya/varun-r-mallya.github.io</code>
 2. Run the file named <code>index.html</code> in a browser of your choice.
 
