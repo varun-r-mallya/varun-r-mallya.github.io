@@ -39,6 +39,7 @@ export default function Home() {
               <h2 className="text-sm text-green-500 font-mono font-thin">
                 Currently, I am enrolled in the Bachelor of Technology program at IIT Roorkee. 
                 <br/>My primary focus lies in the realm of Software development, particularly Low Level programming.
+                <br/>I also help out here <a href="https://sdslabs.co" className="text-white hover:underline">@sdslabs</a>
               </h2>
               <h2 className="text-sm text-white-500 font-mono font-thin"><span className='text-blue-500'>varun</span>@xeonworkstation <span className='text-blue-500'>~</span> % ./blog.sh</h2>
               <h2 className="text-sm text-green-500 font-mono font-thin">
