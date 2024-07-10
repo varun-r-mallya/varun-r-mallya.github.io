@@ -1,21 +1,36 @@
-## This is the source code for my portfolio site
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-##Run this site by running:
-1. <code> git clone https://github.com/varun-r-mallya/varun-r-mallya.github.io</code>
-2. Run the file named <code>index.html</code> in a browser of your choice.
+## Getting Started
 
-## Improvements and Changes
-### The whole site was built with only HTML and CSS 
-and no JS whatsoever.
+First, run the development server:
 
-- Uses CSS animations to make the site look more tolerable 
-- Uses the newly added <code>scroll()</code> function in css to match the animations with the scrolling rate of the user without JS.
-- Uses Google Fonts and many other CDNs
-- makes a request to an API straight up in HTML to submit the contact me form
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-### Any improvements I would add
-- make a hamburger menu for mobile devices.
-- change up the colour scheme
-- position the footer in the bottom without gaps 
-- made the hover popups more aesthetic instead of the current half and half solution. 
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
