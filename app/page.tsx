@@ -59,14 +59,7 @@ export default function Home() {
               </h2>
               <h2 className="text-sm text-white-500 font-mono font-thin"><span className='text-blue-500'>varun</span>@xeonworkstation <span className='text-blue-500'>~</span> % which $TECHNOLOGIES</h2>
               <h2 className="text-sm text-green-500 font-mono font-thin">
-               {/* <img src="https://skillicons.dev/icons?i=go,cpp,c,python,js,react,next,flask,npm,arch,docker,)"></img>
-               <br />
-               <img src="https://skillicons.dev/icons?i=rust,nodejs,bash,html,mongodb,mysql,figma,firebase,webassembly,git,googlecloud,)"></img>
-               <br />
-               <img src="https://skillicons.dev/icons?i=arduino,debian,tailwind,postman,pytorch,tensorflow,obsidian,vim,neovim,clion,vscode,)"></img>
-               <br />
-               <img src="https://skillicons.dev/icons?i=express,css,gradle,linux,ubuntu,vite,)"></img> */}
-              <img src="https://skillicons.dev/icons?i=go,cpp,c,python,js,react,next,flask,npm,arch,docker,rust,nodejs,bash,html,mongodb,mysql,figma,firebase,webassembly,git,googlecloud,arduino,debian,tailwind,postman,pytorch,tensorflow,obsidian,vim,neovim,clion,vscode,express,css,gradle,linux,ubuntu,vite" alt="Technologies" className="w-full" />
+              <img src="https://skillicons.dev/icons?i=go,cpp,c,python,js,react,next,flask,npm,arch,docker,rust,nodejs,bash,html,mongodb,mysql,figma,firebase,webassembly,git,googlecloud,arduino,debian,tailwind,postman,pytorch,tensorflow,obsidian,vim,neovim,clion,vscode,express,css,gradle,linux,ubuntu,vite,unity,typescript,cs," alt="Technologies" className="w-full" />
               </h2>
             </div>
             </div>

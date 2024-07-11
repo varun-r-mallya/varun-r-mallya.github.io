@@ -1,33 +1,27 @@
-'use client'
-import {ParallaxBanner} from 'react-scroll-parallax';
+import { getAllPosts } from "@/lib/api";
+import  HeroPost from "@/components/Hero-post";
 
-export default function Blog() {
-    return (
-        <>
-            <div>
-              <h2>
-                lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                <br/>
-                <br/>
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                <br/>
-                <br/>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                <br/>
-                <br/>
-                <br/>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                <br/>
-                <br/>
-              </h2>
-            </div>
-        </>
-        
-    );
+export default function Index() {
+  const allPosts = getAllPosts();
+
+  return (
+    <main className="flex flex-row justify-center items-center font-mono text-green-600">
+      <div className="flex flex-col justify-center items-center">
+        <h1 className="text-5xl md:text-6xl mb-8">
+          Blog
+        </h1>
+          <div className="flex flex-col justify-center items-center">
+            {allPosts.map((post) => (
+              <HeroPost
+                key={post.slug}
+                title={post.title}
+                date={post.date}
+                slug={post.slug}
+              />
+            ))  
+            }
+          </div>
+      </div>
+    </main>
+  );
 }
