@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 export default function Home() {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -65,7 +66,7 @@ export default function Home() {
                <img src="https://skillicons.dev/icons?i=arduino,debian,tailwind,postman,pytorch,tensorflow,obsidian,vim,neovim,clion,vscode,)"></img>
                <br />
                <img src="https://skillicons.dev/icons?i=express,css,gradle,linux,ubuntu,vite,)"></img> */}
-               <img src="https://skillicons.dev/icons?i=go,cpp,c,python,js,react,next,flask,npm,arch,docker,rust,nodejs,bash,html,mongodb,mysql,figma,firebase,webassembly,git,googlecloud,arduino,debian,tailwind,postman,pytorch,tensorflow,obsidian,vim,neovim,clion,vscode,express,css,gradle,linux,ubuntu,vite,)"></img>
+              <img src="https://skillicons.dev/icons?i=go,cpp,c,python,js,react,next,flask,npm,arch,docker,rust,nodejs,bash,html,mongodb,mysql,figma,firebase,webassembly,git,googlecloud,arduino,debian,tailwind,postman,pytorch,tensorflow,obsidian,vim,neovim,clion,vscode,express,css,gradle,linux,ubuntu,vite" alt="Technologies" className="w-full" />
               </h2>
             </div>
             </div>

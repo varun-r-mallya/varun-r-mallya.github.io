@@ -1,3 +1,4 @@
+import Image from "next/image";
 export default function Contact() {
     return (
     <div className="min-h-screen flex flex-col md:flex-row justify-center items-center" style={{ backgroundImage: "url('/stars.png')" }}>
@@ -10,17 +11,17 @@ export default function Contact() {
         </div>
         <div className="sm:w-auto mx-4 my-4">
           <a href="emailto:varunrmallya@gmail.com" className="block bg-gray-600 p-8 rounded-lg shadow-lg">
-            <img src="/mail.svg" width='50' height='50' ></img>
+            <Image src="/mail.svg" width='50' height='50' alt='mail' ></Image>
           </a>
         </div>
         <div className="sm:w-auto mx-4 my-4">
           <a href="https://www.linkedin.com/in/varun-r-mallya-973b81141/" className="block bg-gray-600 p-8 rounded-lg shadow-lg">
-          <img src="/linkedin.svg" width='50' height='50' ></img>
+          <Image src="/linkedin.svg" width='50' height='50' alt='linkedin'></Image>
           </a>
         </div>
         <div className="sm:w-auto mx-4 my-4">
           <a href="/Resume.pdf" className="block bg-gray-600 p-8 rounded-lg shadow-lg">
-          <img src="/Resume.svg" width='50' height='50' ></img>
+          <Image src="/Resume.svg" width='50' height='50' alt='resume'></Image>
           </a>
         </div>
         
