@@ -1,6 +1,7 @@
 'use client'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 interface Project {
     id: number;
@@ -44,12 +45,12 @@ export default function Projects() {
                                     <span>⭐ {project.stargazers_count} | </span>
                                     <span>{project.language}</span>  
                                     <span> | </span> 
-                                    <span><img src="/watchers.svg" width='20' color='white'/></span>
+                                    <span><Image src="/watchers.svg" width='20' height='20' color='white' alt='watchers icon'/></span>
                                     <span>{project.forks}</span>
                                 </div>
                                 <a className='rounded-full ' href={project.html_url}>
                                     <button className="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-full mt-4">
-                                        <img src='/github.svg' className='w-4 h-4 inline-block mr-2' alt='github' />
+                                        <Image src='/github.svg' className='w-4 h-4 inline-block mr-2' alt='github' width='50' height='50'/>
                                         View on GitHub
                                     </button>
                                 </a>
