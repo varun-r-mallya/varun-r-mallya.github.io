@@ -7,10 +7,12 @@
 - create your markdown using steps in [Markdown Rules](#Markdown Limits)
 - Store your Markdown in the `posts` directory.
 - **MAKE SURE** to add the metadata in the following format at the beginning of the file
-- `---
-   title: 'Your Blog title here'
-   date: '20XX-MM-DD'
-   ---`
+- ```markdown
+     ---
+     title: 'Your Blog title here'
+     date: '20XX-MM-DD'
+     ---
+  ```
 - Store your images in `public/images/<blogname>` and link them as `images/<blogname>/<imagename>` in the blog. 
 
 ## Markdown Limits
