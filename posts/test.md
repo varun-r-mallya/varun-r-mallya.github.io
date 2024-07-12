@@ -41,7 +41,9 @@ hello_world()
 ```
 
 ## Images
+This is an image from the internet
 ![GitHub Logo](https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png)
+This is an image from the Filesystem ![Test image](/images/test/testimage.webp)
 
 ## Lists
 - Unordered List Item 1

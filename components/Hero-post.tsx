@@ -16,12 +16,12 @@ export default function HeroPost({
       <section>
         <div className="flex flex-col justify-start items-start w-[90vw] mb-10">
           <div>
-            <h3 className="mb-4 text-2xl lg:text-3xl text-white">
+            <h3 className="mb-1 text-2xl md:text-2xl text-white">
               <Link href={`/blog/${slug}`} className="hover:underline">
                 {title}
               </Link>
             </h3>
-            <div className="mb-4 md:mb-0 text-lg">
+            <div className="mb-2 md:mb-0 text-lg">
               {date}
             </div>
           </div>

@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "@/lib/api";
-import markdownToHtml from "@/lib/markdownToHtml";
-import { PostBody } from "@/components/Post-body";
+import PostBody from "@/components/Post-body";
 import { PostHeader } from "@/components/Post-header";
+import Comments from "@/components/utterances";
 
 export default async function Post({ params }: Params) {
   const post = getPostBySlug(params.slug);
@@ -10,8 +10,6 @@ export default async function Post({ params }: Params) {
   if (!post) {
     return notFound();
   }
-
-  const content = await markdownToHtml(post.content || "");
 
   return (
     <main>
@@ -22,9 +20,9 @@ export default async function Post({ params }: Params) {
                 title={post.title}
                 date={post.date}
               />
-              <PostBody content={content} />
+              <PostBody markdown={post.content} />
             </div>
-            
+            <Comments issueTerm={post.title} />
         </div>
         </article>
     </main>

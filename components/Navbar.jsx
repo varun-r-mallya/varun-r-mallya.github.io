@@ -48,22 +48,22 @@ function MobileDrawer({ isOpen, onClose }) {
       </button>
       <ul className="flex flex-col justify-center items-center space-y-4 text-green-600">
         <li>
-          <Link href="/" className="hover:text-green-300">
+          <Link href="/" className="hover:text-green-300" onClick={onClose}>
             Home
           </Link>
         </li>
         <li>
-          <Link href="/contact" className="hover:text-green-300">
+          <Link href="/contact" className="hover:text-green-300" onClick={onClose}>
             Contact me
           </Link>
         </li>
         <li>
-          <Link href="/projects" className="hover:text-green-300">
+          <Link href="/projects" className="hover:text-green-300" onClick={onClose}>
             Projects
           </Link>
         </li>
         <li>
-          <Link href="/blog" className="hover:text-green-300">
+          <Link href="/blog" className="hover:text-green-300" onClick={onClose}>
             Blog
           </Link>
         </li>
