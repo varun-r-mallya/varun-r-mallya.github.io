@@ -4,7 +4,7 @@
 - `npm run dev`
 
 ## To add blogs:
-- create your markdown using steps in [Markdown Rules](#Markdown Limits)
+- create your markdown using steps in [Markdown Rules](#markdown-limits)
 - Store your Markdown in the `posts` directory.
 - **MAKE SURE** to add the metadata in the following format at the beginning of the file
 - ```markdown
