@@ -29,27 +29,16 @@ SyntaxHighlighter.registerLanguage('bash', bash);
 SyntaxHighlighter.registerLanguage('markdown', markdown);
 SyntaxHighlighter.registerLanguage('json', json);
 
-type MarkdownProps = {
-  markdown: string;
-};
-
-interface CustomComponentProps {
-  node: {data: {meta: string}} | undefined;
-  inline: boolean;
-  className?: string;
-  children?: ReactNode;
-}
-
-const PostBody: FC<MarkdownProps> = ({ markdown }: MarkdownProps) => {
+const PostBody = ({ markdown }) => {
   
   const syntaxTheme = oneDark;
 
-  const MarkdownComponents: object = {
-    code({ node, inline, className, ...props }: CustomComponentProps) {
+  const MarkdownComponents = {
+    code({ node, inline, className, ...props }) {
       const hasLang = /language-(\w+)/.exec(className || '');
       const hasMeta = node?.data?.meta;
 
-      const applyHighlights: object = (applyHighlights: number) => {
+      const applyHighlights= (applyHighlights) => {
         if (hasMeta) {
           const RE = /{([\d,-]+)}/;
           const metadata = node.data.meta?.replace(/\s/g, '');
@@ -58,7 +47,7 @@ const PostBody: FC<MarkdownProps> = ({ markdown }: MarkdownProps) => {
             : '0';
           const highlightLines = rangeParser(strlineNumbers ?? '');
           const highlight = highlightLines;
-          const data: string = highlight.includes(applyHighlights)
+          const data = highlight.includes(applyHighlights)
             ? 'highlight'
             : '';
           return { data };
