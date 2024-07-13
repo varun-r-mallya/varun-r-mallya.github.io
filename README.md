@@ -1,6 +1,6 @@
 # My personal Blog and Portfolio
 
-## To run in local:
+## To run locally:
 - `npm run dev`
 
 ## To add blogs:
