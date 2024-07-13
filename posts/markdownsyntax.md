@@ -24,9 +24,6 @@ echo "Hello World"
 print("Hello World")
 ```
 
-Yet, the libraries I find are deprecated or not working. I am at a loss.
-I will update this post when I find a solution.
-
 ### Other features to add to this blog
 - Add a search bar
 - Add a comment section using Github [Utterances](https://github.com/utterance/utterances "Visit Utterances!")
