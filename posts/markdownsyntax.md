@@ -3,13 +3,18 @@ title: 'Syntax highlighting in markdown'
 date: '12-07-2024'
 ---
 
-## Syntax Highlighting in Markdown
+## This tests different languages for syntax highlighting
 
-I am trying to use the remark library to highlight syntax but to no avail
+```cpp
+#include <iostream>
+#include <SDL2/SDL.h>
+using namespace std;
 
-<code>This is supposed to be a code snippet</code>
-
-And this is supposed to be a code block
+int main(){
+cout<<"test program"<<endl;
+return 0;
+}
+```
 
 ```bash
 echo "Hello World"
