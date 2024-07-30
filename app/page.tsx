@@ -30,7 +30,7 @@ export default function Home() {
                 {'Varun R Mallya'}
               </h1>
               <h2 className="text-sm md:text-3xl text-green-500 font-mono font-thin">
-                {'>'}I am a programmer and an engineer.
+                {'>'}I am a programmer and a student.
               </h2>
             </div>
           </div>
