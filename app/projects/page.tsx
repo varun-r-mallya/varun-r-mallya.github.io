@@ -36,7 +36,7 @@ export default function Projects() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-4 md:m-40 mt-10 md:mt-5">
                 {projects.map(project => {
-                    if(project.fork === false) {
+                    if(project.fork === false || project.fork === true) {    //pointless line now.
                         return (
                             <div key={project.id} className="bg-gray-900 border-blue-600 border-opacity-100 p-4 rounded-md flex flex-col justify-center items-center">
                                 <h3 className="text-l md:text-xl text-blue-500 font-semibold">{project.name}</h3>
