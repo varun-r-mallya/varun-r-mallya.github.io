@@ -1,19 +1,18 @@
 ---
-title: strace-bpf
-date: 2025-02-23
+title: Strace with eBPF and Rust
+date: 2025-02-01
 author: Varun R Mallya
-description: How I implement strace in eBPF.
+description: How to build an strace-like program with eBPF
 tags:
   - eBPF
   - Rust
+  - strace
 ---
 # THIS IS A PLACEHOLDER
 # Building an `strace`-like Tool with eBPF and Rust
 
 ## Introduction
 `strace` is a powerful tool for tracing system calls made by processes. While the traditional `strace` uses the `ptrace` system call, eBPF provides a more efficient, non-intrusive way to achieve the same functionality. In this post, we'll explore how to build a lightweight `strace`-like tool using eBPF and Rust.
-
----
 
 ## Prerequisites
 Ensure the following are installed on your system:
