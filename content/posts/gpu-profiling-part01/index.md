@@ -34,6 +34,8 @@ I'll be posting individually about each architecture and each statistic in that 
 
 ### Adreno Shader Statistics
 
+#### General stats
+
 ##### Max Waves Per Core
 - The maximum number of simultaneous waves (groups of threads) that can run on a single core.
 - Higher values indicate better utilization of the GPU's parallel processing, but too many waves can lead to blocking of operations and contention for resources.
