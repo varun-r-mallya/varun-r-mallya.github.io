@@ -6,10 +6,11 @@ toc: false
 ---
 
 I'm Varun R Mallya (or `xeon`), a UG student at IIT Roorkee.  
-I work on random stuff but you can usually find me messing with programs in C, C++ or Rust. I also work on [*sysprof*](https://gitlab.gnome.org/GNOME/sysprof) and am currently working on adding `zsh` support to [*bpftool*](https://github.com/libbpf/bpftool).  
-You can find my work on [*GitHub*](https://github.com/varun-r-mallya).  
+I work on random stuff but you can usually find me messing with programs in C, C++ or Rust. I also work on [*sysprof*](https://gitlab.gnome.org/GNOME/sysprof) (as a part of my GSoC) and am currently working on adding `zsh` support to [*bpftool*](https://github.com/libbpf/bpftool).
+I also work on GCC-Rust, Reth and Wasmedge as well.
+You can find my work on [*GitHub*](https://github.com/varun-r-mallya) and [Gnome's Gitlab](https://gitlab.gnome.org/varunrmallya)
 Apart from programming, I like working on hardware projects and security. Sometimes, I try to solve complex Mechanical Engineering problems (in my exams).
-I am also a developer at [*sdslabs*](https://sdslabs.co) where I build new stuff and maintain some old stuff.  
+I am also a developer at [*sdslabs*](https://sdslabs.co) where I build new stuff and maintain some old stuff.
 I sometimes try my hands at CTFs and mostly do reversing (but I suck at it).  
 Oh, and I read a lot of manga.
 
