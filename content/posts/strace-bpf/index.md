@@ -8,7 +8,6 @@ tags:
   - Rust
   - strace
 ---
-# THIS IS A PLACEHOLDER
 # Building an `strace`-like Tool with eBPF and Rust
 
 ## Introduction
