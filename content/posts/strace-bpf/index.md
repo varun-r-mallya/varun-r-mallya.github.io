@@ -8,12 +8,15 @@ tags:
   - Rust
   - strace
 ---
+
 # Building an `strace`-like Tool with eBPF and Rust
 
 ## Introduction
+
 `strace` is a powerful tool for tracing system calls made by processes. While the traditional `strace` uses the `ptrace` system call, eBPF provides a more efficient, non-intrusive way to achieve the same functionality. In this post, we'll explore how to build a lightweight `strace`-like tool using eBPF and Rust.
 
 ## Prerequisites
+
 Ensure the following are installed on your system:
 
 - Linux kernel version 5.4 or higher with eBPF support
@@ -29,6 +32,7 @@ cargo install bpf-linker
 ---
 
 ## Project Setup
+
 Create a new Rust project:
 
 ```bash
@@ -48,6 +52,7 @@ clap = { version = "4.0", features = ["derive"] }
 ---
 
 ## Writing the eBPF Program
+
 Create an eBPF program to trace `sys_enter` events. In `src/bpf/programs.c`:
 
 ```c
@@ -74,6 +79,7 @@ clang -O2 -g -target bpf -c src/bpf/programs.c -o src/bpf/programs.o
 ---
 
 ## Writing the Rust Userspace Program
+
 In `src/main.rs`:
 
 ```rust
@@ -123,9 +129,9 @@ PID 12345 called syscall ID 12
 ---
 
 ## Conclusion
+
 This project demonstrates how eBPF and Rust can be combined to build an efficient `strace`-like tool. With more advanced filtering and context capturing, this tool can become a powerful asset for system profiling and debugging.
 
 For further exploration, consider adding support for syscall names, argument inspection, and process filtering.
 
 Happy tracing!
-

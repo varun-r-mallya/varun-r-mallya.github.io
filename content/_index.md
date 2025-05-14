@@ -1,4 +1,4 @@
 ---
 title: "Home"
-author : "Varun R Mallya"
+author: "Varun R Mallya"
 ---
