@@ -14,7 +14,7 @@ toc: off
 We have finally reached the last week of GSoC 2025. It has been an amazing journey so far and I hope I'll be able to contribute more to GNOME in the coming future. Let summarise what I've done over the past few months and I'll also link to a few blogs explaining parts of this that are too long to fit here.
 
 # Introduction
-This summer, I had the opportunity to work on GNOME's Sysprof, a full system profiling tool. I was tasked with adding eBPF capabilities to Sysprof allowing it to be even more powerful than it already is. As discussed with my mentor Christian Hergert (@hergertme on gitlab.gnome.org), the project was transistioned from being just a project to reduce overhead of `/proc` file access to a bigger goal of allowing more eBPF programs to be added to Sysprof in general.  
+This summer, I had the opportunity to work on GNOME's Sysprof, a full system profiling tool. I was tasked with adding eBPF capabilities to Sysprof allowing it to be even more powerful than it already is. As discussed with my mentor Christian Hergert (@chergert on gitlab.gnome.org), the project was transistioned from being just a project to reduce overhead of `/proc` file access to a bigger goal of allowing more eBPF programs to be added to Sysprof in general.  
 
 [The main PR is here](https://gitlab.gnome.org/GNOME/sysprof/-/merge_requests/143)  
 [Side hustle to add profiled function to source jumping](https://gitlab.gnome.org/GNOME/sysprof/-/merge_requests/145)  
