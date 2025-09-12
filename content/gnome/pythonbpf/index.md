@@ -1,4 +1,12 @@
-# Python-BPF: Writing eBPF Programs in Pure Python
+---
+title: Python-BPF: Writing eBPF Programs in Pure Python
+date: 2025-09-12
+author: Varun R Mallya
+description: I brag about my newst obsession.
+tags:
+  - eBPF
+  - PythonBPF
+---
 
 ## Introduction
 
