@@ -10,7 +10,7 @@ tags:
 
 ## Introduction
 
-Python-BPF offers a new way to write eBPF programs entirely in Python, compiling them into real object files. This project is open-source and available on [GitHub](https://github.com/varun-r-mallya/python-bpf) and [PyPI](https://pypi.org/project/pythonbpf/). I wrote it alongside [R41k0u](https://github.com/r41k0u).
+Python-BPF offers a new way to write eBPF programs entirely in Python, compiling them into real object files. This project is open-source and available on [GitHub](https://github.com/pythonbpf/python-bpf) and [PyPI](https://pypi.org/project/pythonbpf/). I wrote it alongside [R41k0u](https://github.com/r41k0u).
 
 ## Published Library with Future Plans
 
@@ -167,9 +167,6 @@ Python-BPF uses `ctypes` to preserve compatibility, employs decorators to separa
 
 3.  **Step 3: Compile LLVM IR**
     The `.ll` file, containing all code written under the `@bpf` decorator, is compiled using `llc -march=bpf -O2`.
-
-4.  **Step 4: Generate eBPF Object File**
-    The LLVM backend takes the IR and converts it into a bpf object file with eBPF bytecode, handling all optimizations.
 
     ![alt text](image.png)
 
