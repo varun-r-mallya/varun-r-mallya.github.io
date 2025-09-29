@@ -12,6 +12,8 @@ tags:
 
 Python-BPF offers a new way to write eBPF programs entirely in Python, compiling them into real object files. This project is open-source and available on [GitHub](https://github.com/pythonbpf/python-bpf) and [PyPI](https://pypi.org/project/pythonbpf/). I wrote it alongside [R41k0u](https://github.com/r41k0u).
 
+Update: This article has now taken off on [Hacker News](https://news.ycombinator.com/item?id=45221023).
+
 ## Published Library with Future Plans
 
 Python-BPF is a published Python library with plans for further development towards production-ready use.  
