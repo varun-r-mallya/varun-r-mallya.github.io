@@ -23,3 +23,12 @@ We start from the very beginning. `sys_bpf` is where everything begins.
 - then a whole switch case statement runs that goes and does every job bpf does.
 - Since I am trying to get to verifier.c the fastest, I will have to choose `bpf_prog_load` to target today.
 
+# bpf_prog_load
+- This is what we will analyze now.
+- `bpf_prog_load_fixup_attach_type` this fixes backward compatibility stuff.
+- token is then taken from a fd.
+- token capability is evaluated through a barrage of stuff
+Note to self: If I ever wanna work on tokens, come to `syscall.c`
+
+currently stopped at kernel/bpf/syscall.c:2913
+ 
