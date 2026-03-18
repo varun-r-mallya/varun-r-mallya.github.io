@@ -57,10 +57,11 @@ Tangent: `IS_ENABLED(CONFIG_BPF_JIT_ALWAYS_ON)` is how kernel config enablement 
 - `bpf_insn_array_ready` checks the existence of incomplete instruction arrays so that malformed stuff isn't executed.interpreter
 
 # bpf_check
-- `bpf_verifier_env` is a struct that contains everything about the verifier state.
+- We have reached the goal of this post
 
 Tangent:
-- `idr_preload(GFP_KERNEL)` this is preloading the ID mapping allocation in the current context and
-  it goes to the integer ID management part in the kernel that thandoes the ID alocation.
-- `prog_idr`whenever accessed is supposed to be protected by a spinlock.
-- 
+	- `idr_preload(GFP_KERNEL)` this is preloading the ID mapping allocation in the current context and
+	  it goes to the integer ID management part in the kernel that thandoes the ID alocation.
+	- `prog_idr`whenever accessed is supposed to be protected by a spinlock.
+
+
