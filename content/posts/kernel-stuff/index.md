@@ -11,7 +11,7 @@ tags:
 
 Note: This will be a casual blog, so excuse my language. It's mostly stuff for documentation (for my brain).
 
-### Za goal 
+# The goal 
 - My goal today is to start from the syscall and reach verifier.c's entry function.
 - After that, I will move on to analyzing verifier.c itself in the next part to this blog series.
 
@@ -31,12 +31,36 @@ We start from the very beginning. `sys_bpf` is where everything begins.
 Note to self: If I ever wanna work on tokens, come to `syscall.c:bpf_prog_load` 
 - Unprevileged BPF execution ability checked.
 - License is checked
-- Somewhere in this, `bpf_check` is run.
+- Then,
+```c
+	/* run eBPF verifier */
+	err = bpf_check(&prog, attr, uattr, uattr_size);
+	if (err < 0)
+		goto free_used_maps;
+
+	prog = bpf_prog_select_runtime(prog, &err);
+	if (err < 0)
+		goto free_used_maps;
+
+	err = bpf_prog_mark_insn_arrays_ready(prog);
+	if (err < 0)
+		goto free_used_maps;
+
+	err = bpf_prog_alloc_id(prog);
+	if (err)
+		goto free_used_maps;
+```
+The order in which this is run is pretty cool too.
+- `bpf_check` runs the verifier on the program
+- `bpf_prog_select_runtime` is what selects the JIT interpreter or the direct interpreter (if I wanna understand JIT and interpretation itself, I need to start from here ig)
+Tangent: `IS_ENABLED(CONFIG_BPF_JIT_ALWAYS_ON)` is how kernel config enablement is checked.
+- `bpf_insn_array_ready` checks the existence of incomplete instruction arrays so that malformed stuff isn't executed.interpreter
 
 # bpf_check
-- `bpf_verifier_env` is initialized
-- ^ "
+- `bpf_verifier_env` is a struct that contains everything about the verifier state.
 
-
-currently stopped at kernel/bpf/syscall.c:2931
- 
+Tangent:
+- `idr_preload(GFP_KERNEL)` this is preloading the ID mapping allocation in the current context and
+  it goes to the integer ID management part in the kernel that thandoes the ID alocation.
+- `prog_idr`whenever accessed is supposed to be protected by a spinlock.
+- 
