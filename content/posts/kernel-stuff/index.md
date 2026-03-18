@@ -30,6 +30,12 @@ We start from the very beginning. `sys_bpf` is where everything begins.
 - token capability is evaluated through a barrage of stuff
 Note to self: If I ever wanna work on tokens, come to `syscall.c:bpf_prog_load` 
 - Unprevileged BPF execution ability checked.
+- License is checked
+- Somewhere in this, `bpf_check` is run.
+
+# bpf_check
+- `bpf_verifier_env` is initialized
+- ^ "
 
 
 currently stopped at kernel/bpf/syscall.c:2931
