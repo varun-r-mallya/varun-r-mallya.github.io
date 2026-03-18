@@ -28,7 +28,9 @@ We start from the very beginning. `sys_bpf` is where everything begins.
 - `bpf_prog_load_fixup_attach_type` this fixes backward compatibility stuff.
 - token is then taken from a fd.
 - token capability is evaluated through a barrage of stuff
-Note to self: If I ever wanna work on tokens, come to `syscall.c`
+Note to self: If I ever wanna work on tokens, come to `syscall.c:bpf_prog_load` 
+- Unprevileged BPF execution ability checked.
 
-currently stopped at kernel/bpf/syscall.c:2913
+
+currently stopped at kernel/bpf/syscall.c:2931
  
