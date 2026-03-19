@@ -9,7 +9,7 @@ tags:
   - new stuff
 toc: false
 ---
-Iwas reading the `verifier.c` file when I found `BPF_FEAT_STREAMS` specifically mentioned in the `bpf_features` enum.
+I was reading the `verifier.c` file when I found `BPF_FEAT_STREAMS` specifically mentioned in the `bpf_features` enum.
 
 So, I blamed the line to find:
 
@@ -58,10 +58,9 @@ Ok so big words. Lemme break it down. Asking ye ol' Gemini yields:
 >
 >1. The Core Purpose: Context-Safe Logging
 >BPF programs often run in "atomic" or "emergency" contexts where standard kernel functions like printk() or kmalloc() are unsafe. These include:
-So all *real* kernel stuff cannot be run when a BPF program is running. This we knew.
+
 >* NMI (Non-Maskable Interrupts): Where a deadlock would occur if the code tried to acquire a spinlock already held by the interrupted task.
 >* HardIRQ/Scheduler paths: Where sleeping or blocking is strictly forbidden.
-So if an interrupted task is spinning a lock (hehe, get it?), 
 >The "stream" provides two logical channels, BPF_STDOUT and BPF_STDERR, to allow programs and the kernel to emit diagnostic data (strings, stack traces, error codes) without risking a system
 >crash or deadlock.
 >
@@ -85,6 +84,8 @@ So if an interrupted task is spinning a lock (hehe, get it?),
 >
 >In summary, this stream implementation is a high-reliability diagnostic pipe that guarantees "always-on" logging visibility even when the kernel is in its most sensitive states.
 
+Honestly, pretty clear explanation of the big wall of words. I have nothing to add to that.
+
 ```
     The implementation of a stream is as follows. Everytime a message is
     emitted from the kernel (directly, or through a BPF program), a record
@@ -92,16 +93,28 @@ So if an interrupted task is spinning a lock (hehe, get it?),
     obtained using alloc_pages_nolock(). This ensures that we can allocate
     memory from any context. The eventual plan is to discard this scheme in
     favor of Alexei's kmalloc_nolock() [0].
+```
 
+As explained by ye ol' Gemini, you cannot do normal kernel things like kmalloc or something inside the NMI. At this point in time, they haven't really come to use `kmalloc_nolock()` , but I believe they did it (have to check though) between the time I wrote this and the author wrote the commit.
+
+```
     This record is then locklessly inserted into a list (llist_add()) so
     that the printing side doesn't require holding any locks, and works in
     any context. Each stream has a maximum capacity of 4MB of text, and each
     printed message is accounted against this limit.
+```
 
+I learnt a few things from this. You cannot do normal kernel stuff when inside the BPF context. You need to make sure you aren't any pre-acquired spinlocks and that you can only write 1 page worth of stuff here.
+
+```
     Messages from a program are emitted using the bpf_stream_vprintk kfunc,
     which takes a stream_id argument in addition to working otherwise
     similar to bpf_trace_vprintk.
+```
 
+
+
+```
     The bprintf buffer helpers are extracted out to be reused for printing
     the string into them before copying it into the stream, so that we can
     (with the defined max limit) format a string and know its true length

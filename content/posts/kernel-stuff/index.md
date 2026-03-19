@@ -7,6 +7,7 @@ tags:
   - BPF
   - Kernel
   - fundamentals
+toc: false
 ---
 
 Note: This will be a casual blog, so excuse my language. It's mostly stuff for documentation (for my brain).
