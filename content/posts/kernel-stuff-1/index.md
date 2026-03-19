@@ -17,5 +17,5 @@ Rn, we gotta understand the working of the verifier and hopefully find errors.
 This is the holy grail where it all starts.
 - `bpf_verifier_env` is similarly the holy grail struct where it all begins.
 - `bpf_features` I still do not fully understand this enum, although I know it talks about readonly memory and bpf streams.
-
+- 
 

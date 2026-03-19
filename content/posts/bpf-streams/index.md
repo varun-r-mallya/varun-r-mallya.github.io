@@ -7,8 +7,9 @@ tags:
   - BPF
   - Kernel
   - new stuff
+toc: false
 ---
-I was reading the `verifier.c` file when I found `BPF_FEAT_STREAMS` specifically mentioned in the `bpf_features` enum.
+Iwas reading the `verifier.c` file when I found `BPF_FEAT_STREAMS` specifically mentioned in the `bpf_features` enum.
 
 So, I blamed the line to find:
 
@@ -23,12 +24,22 @@ Date:   Thu Jul 3 13:48:08 2025 -0700
     BPF programs. Two streams are exposed, BPF_STDOUT and BPF_STDERR. These
     can be used for printing messages that can be consumed from user space,
     thus it's similar in spirit to existing trace_pipe interface.
+```
 
+Let me interject here. So, they made a streaming API. It helps print stuff from BPF programs. Alright, simple. I want to now know why they could not do the same thing with 
+`trace_pipe` honestly. Maybe because they needed separate stuff for STDOUT and STDERR or maybe because the trace pipe thing isn't very stable (as I experienced when I moved between 6.18 and 7.0).
+
+```
     The kernel will use the BPF_STDERR stream to notify the program of any
     errors encountered at runtime. BPF programs themselves may use both
     streams for writing debug messages. BPF library-like code may use
     BPF_STDERR to print warnings or errors on misuse at runtime.
+```
 
+So the author made this thinking about future BPF library code (which is kinda genius) which could use these streams.
+Maybe I should try writing a BPF library ???!!! (I have an idea for a floating point library (a joke honestly) but could actually be useful, who knows ?)
+
+```
     The implementation of a stream is as follows. Everytime a message is
     emitted from the kernel (directly, or through a BPF program), a record
     is allocated by bump allocating from per-cpu region backed by a page
@@ -39,7 +50,42 @@ Date:   Thu Jul 3 13:48:08 2025 -0700
     errors encountered at runtime. BPF programs themselves may use both
     streams for writing debug messages. BPF library-like code may use
     BPF_STDERR to print warnings or errors on misuse at runtime.
+```
 
+Ok so big words. Lemme break it down. Asking ye ol' Gemini yields:
+>✦ The implementation of a "stream" in BPF (as described in your text and reflected in the kernel/bpf/stream.c file) is a specialized, lock-safe logging mechanism designed for the kernel's
+>most restrictive execution environments.
+>
+>1. The Core Purpose: Context-Safe Logging
+>BPF programs often run in "atomic" or "emergency" contexts where standard kernel functions like printk() or kmalloc() are unsafe. These include:
+So all *real* kernel stuff cannot be run when a BPF program is running. This we knew.
+>* NMI (Non-Maskable Interrupts): Where a deadlock would occur if the code tried to acquire a spinlock already held by the interrupted task.
+>* HardIRQ/Scheduler paths: Where sleeping or blocking is strictly forbidden.
+So if an interrupted task is spinning a lock (hehe, get it?), 
+>The "stream" provides two logical channels, BPF_STDOUT and BPF_STDERR, to allow programs and the kernel to emit diagnostic data (strings, stack traces, error codes) without risking a system
+>crash or deadlock.
+>
+>2. Allocation Strategy: From "Bump" to kmalloc_nolock
+>The text describes an evolution in how the memory for these messages is managed:
+>* The Initial/Old Scheme: It used a "bump allocator" on per-CPU pages obtained via alloc_pages_nolock(). This is essentially a pointer that moves forward in a pre-allocated block of
+>memory—extremely fast and requires no locks, but inflexible.
+>* The Current Scheme (kmalloc_nolock): As seen in the codebase, the implementation has moved to Alexei Starovoitov's kmalloc_nolock(). This is a sophisticated allocator that provides
+>kmalloc-like functionality but uses lockless primitives (such as cmpxchg) instead of standard spinlocks, making it safe to call from NMIs.
+>
+>3. Logical Streams: STDOUT vs  
+>* BPF_STDERR (The Kernel's Voice): This is primarily used by the kernel to report runtime exceptions to the BPF program (and the user). If a program attempts a division by zero or an
+>out-of-bounds access that the verifier couldn't catch statically, the kernel "emits" an error message to this stream.
+>* BPF_STDOUT (The Program's Voice): Used by developers for standard debugging (e.g., via bpf_stream_printk).
+>* Library Use: Shared BPF libraries can use BPF_STDERR to log warnings about API misuse or internal state corruption at runtime, similar to how a user-space library might write to stderr.
+>
+>4. Data Flow and Structures
+>* struct bpf_stream_elem: Every message is wrapped in this structure, which contains the string data and a lockless list node.
+>* llist (Lockless Link List): Elements are pushed into a per-program llist. This ensures that multiple CPUs can write to the stream simultaneously without contention.
+>* Consumption: The messages are eventually aggregated and can be read back (often through a file descriptor or a specialized BPF link) into user space for analysis.
+>
+>In summary, this stream implementation is a high-reliability diagnostic pipe that guarantees "always-on" logging visibility even when the kernel is in its most sensitive states.
+
+```
     The implementation of a stream is as follows. Everytime a message is
     emitted from the kernel (directly, or through a BPF program), a record
     is allocated by bump allocating from per-cpu region backed by a page
