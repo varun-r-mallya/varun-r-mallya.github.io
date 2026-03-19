@@ -35,3 +35,9 @@ So, X Macros are a pattern of using programming language macros to generate list
 > The list is defined by a macro or header file (named, LIST) which generates no code by itself, but merely consists of a sequence of invocations of a macro (classically named "X") with the elements' data. Each expansion of LIST is preceded by a definition of X with the syntax for a list element. The invocation of LIST expands X for each element in the list. 
 
 So here, it gets the stuff form `bpf_types.h` and runs these multitudes of macros on it and it turns into an initializer list that shows all the programs.
+
+The double hashtag (##) is a token pasting operator in the C preprocessor. Used to merge two tokens into one during preprocessing.
+its like `<name>_verifier_ops` that comes about by concatenating `<name>` and `_verifier_ops`. 
+
+This is honestly some C syntax that I never knew about.
+
