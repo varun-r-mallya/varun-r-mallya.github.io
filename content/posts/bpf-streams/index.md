@@ -1,0 +1,128 @@
+---
+title: Talking about BPF Streams
+date: 2026-03-19
+author: Varun R Mallya
+description: I try my best to analyze BPF Streams
+tags:
+  - BPF
+  - Kernel
+  - new stuff
+---
+I was reading the `verifier.c` file when I found `BPF_FEAT_STREAMS` specifically mentioned in the `bpf_features` enum.
+
+So, I blamed the line to find:
+
+```git
+commit 5ab154f1463a111e1dc8fd5d31eaa7a2a71fe2e6
+Author: Kumar Kartikeya Dwivedi <memxor@gmail.com>
+Date:   Thu Jul 3 13:48:08 2025 -0700
+
+    bpf: Introduce BPF standard streams
+
+    Add support for a stream API to the kernel and expose related kfuncs to
+    BPF programs. Two streams are exposed, BPF_STDOUT and BPF_STDERR. These
+    can be used for printing messages that can be consumed from user space,
+    thus it's similar in spirit to existing trace_pipe interface.
+
+    The kernel will use the BPF_STDERR stream to notify the program of any
+    errors encountered at runtime. BPF programs themselves may use both
+    streams for writing debug messages. BPF library-like code may use
+    BPF_STDERR to print warnings or errors on misuse at runtime.
+
+    The implementation of a stream is as follows. Everytime a message is
+    emitted from the kernel (directly, or through a BPF program), a record
+    is allocated by bump allocating from per-cpu region backed by a page
+    obtained using alloc_pages_nolock(). This ensures that we can allocate
+    memory from any context. The eventual plan is to discard this scheme in
+    favor of Alexei's kmalloc_nolock() [0].    
+    The kernel will use the BPF_STDERR stream to notify the program of any
+    errors encountered at runtime. BPF programs themselves may use both
+    streams for writing debug messages. BPF library-like code may use
+    BPF_STDERR to print warnings or errors on misuse at runtime.
+
+    The implementation of a stream is as follows. Everytime a message is
+    emitted from the kernel (directly, or through a BPF program), a record
+    is allocated by bump allocating from per-cpu region backed by a page
+    obtained using alloc_pages_nolock(). This ensures that we can allocate
+    memory from any context. The eventual plan is to discard this scheme in
+    favor of Alexei's kmalloc_nolock() [0].
+
+    This record is then locklessly inserted into a list (llist_add()) so
+    that the printing side doesn't require holding any locks, and works in
+    any context. Each stream has a maximum capacity of 4MB of text, and each
+    printed message is accounted against this limit.
+
+    Messages from a program are emitted using the bpf_stream_vprintk kfunc,
+    which takes a stream_id argument in addition to working otherwise
+    similar to bpf_trace_vprintk.
+
+    The bprintf buffer helpers are extracted out to be reused for printing
+    the string into them before copying it into the stream, so that we can
+    (with the defined max limit) format a string and know its true length
+    before performing allocations of the stream element.
+
+    For consuming elements from a stream, we expose a bpf(2) syscall command
+    named BPF_PROG_STREAM_READ_BY_FD, which allows reading data from the
+    stream of a given prog_fd into a user space buffer. The main logic is
+    implemented in bpf_stream_read(). The log messages are queued in
+    bpf_stream::log by the bpf_stream_vprintk kfunc, and then pulled and
+    ordered correctly in the stream backlog.
+
+    For this purpose, we hold a lock around bpf_stream_backlog_peek(), as
+    llist_del_first() (if we maintained a second lockless list for the
+    backlog) wouldn't be safe from multiple threads anyway. Then, if we
+    fail to find something in the backlog log, we splice out everything from
+    the lockless log, and place it in the backlog log, and then return the
+    head of the backlog. Once the full length of the element is consumed, we
+    will pop it and free it.
+
+    The lockless list bpf_stream::log is a LIFO stack. Elements obtained
+    using a llist_del_all() operation are in LIFO order, thus would break
+    the chronological ordering if printed directly. Hence, this batch of
+    messages is first reversed. Then, it is stashed into a separate list in
+    the stream, i.e. the backlog_log. The head of this list is the actual
+    message that should always be returned to the caller. All of this is
+    done in bpf_stream_backlog_fill().
+
+    From the kernel side, the writing into the stream will be a bit more
+    involved than the typical printk. First, the kernel typically may print
+    a collection of messages into the stream, and parallel writers into the
+    stream may suffer from interleaving of messages. To ensure each group of
+    messages is visible atomically, we can lift the advantage of using a
+    lockless list for pushing in messages.
+
+    To enable this, we add a bpf_stream_stage() macro, and require kernel
+    users to use bpf_stream_printk statements for the passed expression to
+    write into the stream. Underneath the macro, we have a message staging
+    API, where a bpf_stream_stage object on the stack accumulates the
+    messages being printed into a local llist_head, and then a commit
+    operation splices the whole batch into the stream's lockless log list.
+
+    This is especially pertinent for rqspinlock deadlock messages printed to
+    program streams. After this change, we see each deadlock invocation as a
+    non-interleaving contiguous message without any confusion on the
+    reader's part, improving their user experience in debugging the fault.
+
+    While programs cannot benefit from this staged stream writing API, they
+    could just as well hold an rqspinlock around their print statements to
+    serialize messages, hence this is kept kernel-internal for now.
+
+    Overall, this infrastructure provides NMI-safe any context printing of
+    messages to two dedicated streams.
+
+    Later patches will add support for printing splats in case of BPF arena
+    page faults, rqspinlock deadlocks, and cond_break timeouts, and
+    integration of this facility into bpftool for dumping messages to user
+    space.
+
+      [0]: https://lore.kernel.org/bpf/20250501032718.65476-1-alexei.starovoitov@gmail.com
+
+    Reviewed-by: Eduard Zingerman <eddyz87@gmail.com>
+    Reviewed-by: Emil Tsalapatis <emil@etsalapatis.com>
+    Signed-off-by: Kumar Kartikeya Dwivedi <memxor@gmail.com>
+    Link: https://lore.kernel.org/r/20250703204818.925464-3-memxor@gmail.com
+    Signed-off-by: Alexei Starovoitov <ast@kernel.org>
+```
+
+
+```
