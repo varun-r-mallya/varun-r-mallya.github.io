@@ -16,3 +16,5 @@ Asking LLMs yields the following big words:
 	- supports symmetric multiprocessing
 I also found out that there is a small "bootloader" stub that decompresses the kernel first before doing all the other stuff.
 
+## NOTE:
+This blog, like all the blogs in this series is dynamic. It will keep being updated. This article is a stub.

@@ -34,5 +34,20 @@ This is the holy grail where it all starts.
 	- It checks the .BTF section of the linux kernel
 	- It then checks for the __start_BTF and __stop_BTF linker symbols and uses them to parse and put that BTF info into memory.
 	- As far as I am able to infer, this happens on every goddamn verification not happening concurrently/paralelly, which seems kinda wasteful, but they must have their reasons idk.
+	- This then goes on to build `struct btf`.
+- Now we come back to `bpf_check()`
+- It then checks for verbose log request from the user and if it sees that the user has given a buffer for a verbose log, it keeps the verbose verifier log. (`bpf_vlog_init`)
+```c
+
+	/* bit mask to keep track of whether a register has been accessed
+	 * since the last time the function state was printed
+	 */
+	u32 scratched_regs;
+	/* Same as scratched_regs but for stack slots */
+	u64 scratched_stack_slots;
+```
+- The above code is a very very cool optimization for the logging system of BPF. It uses bitmasks to see which stack slots and which registers have been "scratched" since the previous instruction. 
 
 
+## NOTE:
+This blog, like all the blogs in this series is dynamic. It will keep being updated. This article is a stub.

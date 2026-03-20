@@ -66,3 +66,5 @@ Tangent:
 	- `prog_idr`whenever accessed is supposed to be protected by a spinlock.
 
 
+## NOTE:
+This blog, like all the blogs in this series is dynamic. It will keep being updated. This article is a stub.

@@ -183,5 +183,5 @@ I learnt a few things from this. You cannot do normal kernel stuff when inside t
     Signed-off-by: Alexei Starovoitov <ast@kernel.org>
 ```
 
-
-```
+## NOTE:
+This blog, like all the blogs in this series is dynamic. It will keep being updated. This article is a stub.
