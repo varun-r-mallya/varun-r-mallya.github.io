@@ -8,6 +8,7 @@ tags:
   - Kernel
   - fundamentals
   - verifier
+toc: false
 ---
 
 # The goal
@@ -47,7 +48,7 @@ This is the holy grail where it all starts.
 	u64 scratched_stack_slots;
 ```
 - The above code is a very very cool optimization for the logging system of BPF. It uses bitmasks to see which stack slots and which registers have been "scratched" since the previous instruction. 
-
+- 
 
 ## NOTE:
 This blog, like all the blogs in this series is dynamic. It will keep being updated. This article is a stub.
