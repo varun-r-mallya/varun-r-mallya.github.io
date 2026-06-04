@@ -1,6 +1,6 @@
 ---
 title: Getting BPF exceptions RISC-V JIT support
-date: 2026-05-3
+date: 2026-05-03
 author: Varun R Mallya
 description: I try to add exceptions to RISC-V JIT
 tags:
