@@ -12,7 +12,7 @@ toc: false
 
 Ok, so I recently landed this: [damn das a patch](https://lore.kernel.org/bpf/20260602205847.102825-1-varunrmallya@gmail.com/)  
 I did this because I saw [this](https://lore.kernel.org/bpf/20260513044949.2382019-1-yonghong.song@linux.dev/) and I then wanted to add arm64 support to it. But Puranjay added it so fast that my dumb head had no time at all to add this out. Then, I tried to add riscv support for it, but once I got testing ready, I realised that the selftests did not work at all because exceptions, which were present in the tests I was running were not there on RISC-V, so that eventually turned into my first goal.
-Now, I've throughly dealth with RISC-V JIT and the nuances of cross compiling, which is somehow pretty hard. I'd really like someone to build cross compilation containers maybe (or they probably do and I just dont know)
+Now, I've thoroughly dealt with RISC-V JIT and the nuances of cross compiling, which is somehow pretty hard. I'd really like someone to build cross compilation containers maybe (or they probably do and I just don't know)
 This blog will show how I analyze stuff to write a patchset.
 
 First things first, I wrote the patch improving RISC-V not only to gain experience with the JIT before working on it, but to also get the testing env set up as well as the compilation toolchain + scripts to load it into virtme-ng.
@@ -151,10 +151,10 @@ Let's carefully understand what the agent says.
 Let's take a top down approach. To get exceptions working, I need to get the bpf_throw() function working as well as the bpf_stack_walker(). Then to get that working, I need to get arch_bpf_stack_walk done.
 
 Now, as the bot told me to, I'll read  `f18b03fabaa9b7c80e80b72a621f481f0d706ae0`:
-This explains in totality, what exceptions are and how they work. Commit messages are usually a trasure trove of things and that's where I derive most of knowledge from. I dont rely on only the code as it's very hard to understand on a first read. Also, for someone like me, who only understands something when they understand how it works internally (and this feeling repeats recursively, which means I have a compulsive need to reach to the bottom of stuff), it gives me a clearer understanding while also saving me from reading from whenever the syscall is hit (and btw I have a "blog" on that.).  
+This explains in totality, what exceptions are and how they work. Commit messages are usually a treasure trove of things and that's where I derive most of knowledge from. I don't rely on only the code as it's very hard to understand on a first read. Also, for someone like me, who only understands something when they understand how it works internally (and this feeling repeats recursively, which means I have a compulsive need to reach to the bottom of stuff), it gives me a clearer understanding while also saving me from reading from whenever the syscall is hit (and btw I have a "blog" on that.).  
 `bpf_throw` is the end of a program and unwinds all stack frames. It happens when an exception is encountered. It's also explicitly not a slowpath inside the bpf program as the duty of unwinding the stack is thrown to the bpf_throw() kfunc itself.
 This internally uses `add_hidden_subprog`.
-I see that this first commit also contains an edit to `emit_prologue` had a new argument added to it to check if it is a exception calback. 
+I see that this first commit also contains an edit to `emit_prologue` had a new argument added to it to check if it is a exception callback. 
 Now, I've identified a few keywords here that I don't understand at all:
 - prologue
 - epilogue
