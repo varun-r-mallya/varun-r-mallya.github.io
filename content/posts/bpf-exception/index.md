@@ -1,6 +1,6 @@
 ---
 title: Getting BPF exceptions RISC-V JIT support
-date: 2026-05-03
+date: 2026-06-03
 author: Varun R Mallya
 description: I try to add exceptions to RISC-V JIT
 tags:
@@ -146,3 +146,11 @@ Reading order summary
 
 The arm64 commit (22fc0e80aeb5) is your primary template since RISC-V and arm64 share the same fundamental constraint: frame-pointer-based unwinding, callee-saved reg sets that partially overlap with the BPF register map, and a 3rd-argument convention for passing the boundary program's FP to the exception callback.
 ```
+
+Let's carefully understand what the agent says. 
+Let's take a top down approach. To get exceptions working, I need to get the bpf_throw() function working as well as the bpf_stack_walker(). Then to get that working, I need to get arch_bpf_stack_walk done.
+
+Now, as the bot told me to, I'll read  `f18b03fabaa9b7c80e80b72a621f481f0d706ae0`:
+This explains in totality, what exceptions are and how they work. Commit messages are usually a trasure trove of things and that's where I derive most of knowledge from. I dont rely on only the code as it's very hard to understand on a first read. Also, for someone like me, who only understands something when they understand how it works internally (and this feeling repeats recursively, which means I have a compulsive need to reach to the bottom of stuff), it gives me a clearer understanding while also saving me from reading from whenever the syscall is hit (and btw I have a "blog" on that.).  
+`bpf_throw` is the end of a program and unwinds all stack frames. It happens when an exception is encountered. It's also explicitly not a slowpath inside the bpf program as the duty of unwinding the stack is thrown to the bpf_throw() kfunc itself.
+This internally uses `add_hidden_subprog`
