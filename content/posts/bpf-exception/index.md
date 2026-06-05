@@ -153,4 +153,102 @@ Let's take a top down approach. To get exceptions working, I need to get the bpf
 Now, as the bot told me to, I'll read  `f18b03fabaa9b7c80e80b72a621f481f0d706ae0`:
 This explains in totality, what exceptions are and how they work. Commit messages are usually a trasure trove of things and that's where I derive most of knowledge from. I dont rely on only the code as it's very hard to understand on a first read. Also, for someone like me, who only understands something when they understand how it works internally (and this feeling repeats recursively, which means I have a compulsive need to reach to the bottom of stuff), it gives me a clearer understanding while also saving me from reading from whenever the syscall is hit (and btw I have a "blog" on that.).  
 `bpf_throw` is the end of a program and unwinds all stack frames. It happens when an exception is encountered. It's also explicitly not a slowpath inside the bpf program as the duty of unwinding the stack is thrown to the bpf_throw() kfunc itself.
-This internally uses `add_hidden_subprog`
+This internally uses `add_hidden_subprog`.
+I see that this first commit also contains an edit to `emit_prologue` had a new argument added to it to check if it is a exception calback. 
+Now, I've identified a few keywords here that I don't understand at all:
+- prologue
+- epilogue
+- add_hidden_subprog
+- arch_bpf_stack_walk
+- poke tab (pokedex, but larger lmao)
+
+This commit also mentions that this kfunc fails to unwind when there are weird resourced locked up and says that there would be some future effort to fix that.
+> Note to self: throw an agent after this point to see if this landed, else I'll land it.
+
+This commit also contains some weird x86 JIT specific stuff, which is a can of worms I am not willing to open as of now. I am an enjoyer of RISC based assembly and absolutely hate how CISC stuff like x86 is written.
+The `emit_prologue` function has been modified to take the check for the exception callback as well.
+The below code is the crux of the whole commit and mostly what I am interested in.
+```diff
+
++struct bpf_throw_ctx {
++       struct bpf_prog_aux *aux;
++       u64 sp;
++       u64 bp;
++       int cnt;
++};
++
++static bool bpf_stack_walker(void *cookie, u64 ip, u64 sp, u64 bp)
++{
++       struct bpf_throw_ctx *ctx = cookie;
++       struct bpf_prog *prog;
++
++       if (!is_bpf_text_address(ip))
++               return !ctx->cnt;
++       prog = bpf_prog_ksym_find(ip);
++       ctx->cnt++;
++       if (bpf_is_subprog(prog))
++               return true;
++       ctx->aux = prog->aux;
++       ctx->sp = sp;
++       ctx->bp = bp;
++       return false;
++}
++__bpf_kfunc void bpf_throw(u64 cookie)
++{
++       struct bpf_throw_ctx ctx = {};
++
++       arch_bpf_stack_walk(bpf_stack_walker, &ctx);
++       WARN_ON_ONCE(!ctx.aux);
++       if (ctx.aux)
++               WARN_ON_ONCE(!ctx.aux->exception_boundary);
++       WARN_ON_ONCE(!ctx.bp);
++       WARN_ON_ONCE(!ctx.cnt);
++       ctx.aux->bpf_exception_cb(cookie, ctx.sp, ctx.bp);
++}
++
+```
+
+So now, before I move ahead, I want to go into a tangent and understand how it is used.
+I am going to read out the `tools/testing/selftests/bpf/progs/exceptions*.c` files to understand how it's going to be used.
+
+`bpf_throw(u64 cookie)`: calling it immediately terminates the bpf program and unwinds the stack and all subprogram frames. If there is an exception callback registered via the __exception_cb(func), something like so:
+```c
+SEC("tc")
+__exception_cb(exception_cb_mod)
+int exception_ext_mod_cb_runtime(struct __sk_buff *ctx)
+{
+	bpf_throw(25);
+	return 0;
+}
+```
+where 
+```c
+__noinline int exception_cb_mod(u64 cookie)
+{
+	return exception_cb_mod_global(cookie) + cookie + 10;
+}
+```
+
+And they have a few rules:
+
+  Exception callback rules (enforced by the verifier in exceptions_fail.c):
+
+  - Must be a global function with a single integer argument and an integer return
+  - Can't throw itself ("cannot be called from callback subprog")
+  - Can't call the exception callback directly via subprog calls
+  - Only one callback allowed per program
+  - Tracing/freplace programs can't attach to exception callbacks, but they can attach to global functions called from the callback
+
+
+  Throw restrictions (all tested in exceptions_fail.c):
+
+  - Can't throw while holding bpf_spin_lock, bpf_rcu_read_lock, bpf_preempt_disable, or bpf_local_irq_save
+  - Can't throw with unreleased references (e.g. bpf_obj_new without bpf_obj_drop)
+  - Can't throw from timer callbacks, bpf_loop callbacks, or rbtree comparison callbacks
+  - Subprogs that call throwing functions inherit the same restrictions at the call site
+
+> 'Nother note to self:   Stack arg handling — On x86/arm64 with __BPF_FEATURE_STACK_ARGUMENT, bpf_throw correctly unwinds functions that pass >5 arguments on the stack, and the exception callback
+>  gets the aggregated cookie. On other archs, those tests are stubs.
+
+This note above is what I wanna fix for RISC-V eventually after this is complete. This is basically a dependency for RISC-V JIT to work with stack args.
+
