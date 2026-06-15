@@ -252,3 +252,9 @@ And they have a few rules:
 
 This note above is what I wanna fix for RISC-V eventually after this is complete. This is basically a dependency for RISC-V JIT to work with stack args.
 
+Now, let's try understanding how this happens on ARM64 JIT as it's the closest model that we have to emulate on riscv.
+I like to think of things in terms of CFGs that somehow morph into flowcharts in my head, so we start off at `bpf_throw()` and we'll constrct a full model to reach the assembly on the ARM64 JIT.
+
+I am going to treat the verifier as a blackbox right now though, since I don't have to make any changes inside it. The neat part about this is that I still get to see what guarantees the verifier provides to me so that I can JIT accurately.
+
+The verifier first sees a btf_decl_tag attribute in the sk
