@@ -1,0 +1,6 @@
+<header>
+<a class="site-name" href="{{ "/" | relLangURL }}">{{ site.Params.sitename | default site.Title }}</a>
+<nav>
+{{ range site.Menus.main.ByWeight }}<a href="{{ .URL | relLangURL }}">{{ .Name }}</a>{{ end }}
+</nav>
+</header>

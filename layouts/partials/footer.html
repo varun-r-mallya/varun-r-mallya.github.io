@@ -1,0 +1,8 @@
+<footer>
+<p>
+&copy; {{ now.Year }} {{ site.Params.author.name | default site.Title }}
+{{ if site.Params.socialIcons }} &middot;
+{{ range site.Params.socialIcons }}<a href="{{ .url }}">{{ .name }}</a> {{ end }}
+{{ end }}
+</p>
+</footer>
