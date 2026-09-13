@@ -72,6 +72,20 @@ h1, h2, h3 {
   min-width: 7em;
 }
 
+.tag-inprogress {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #9a6700;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  padding: 0 0.3em;
+  line-height: 1.4;
+  vertical-align: middle;
+}
+
 .meta {
   color: #666;
   margin-top: -0.5em;
@@ -133,5 +147,10 @@ footer a {
 
   .post-date, .meta, footer {
     color: #999;
+  }
+
+  .tag-inprogress {
+    color: #e3b341;
+    border-color: #e3b341;
   }
 }

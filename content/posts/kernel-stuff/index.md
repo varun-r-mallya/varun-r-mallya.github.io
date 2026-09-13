@@ -8,6 +8,7 @@ tags:
   - Kernel
   - fundamentals
 toc: false
+inprogress: true
 ---
 
 Note: This will be a casual blog, so excuse my language. It's mostly stuff for documentation (for my brain).

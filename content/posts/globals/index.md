@@ -8,6 +8,7 @@ tags:
   - Kernel
   - fundamentals
 toc: false
+inprogress: true
 ---
 I was going through verifier.c and found a peculiar global variable `struct btf *btf_vmlinux`. It is handled across the code by putting a mutex on it's writes. 
 Although I knew how the kernel's ELF structure is handled, I still had no proper sense of how close it was to normal ELF structures and that the `vmlinux` found in /boot is literally just an ELF that is fully valid.

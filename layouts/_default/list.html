@@ -3,11 +3,7 @@
 {{ with .Content }}<div>{{ . }}</div>{{ end }}
 
 <ul class="post-list">
-{{ $pages := .Pages }}
-{{ if eq .Section "posts" }}
-  {{ $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
-{{ end }}
-{{ range $pages.ByDate.Reverse }}
+{{ range .Pages.ByDate.Reverse }}
   <li>
     {{ if not .Date.IsZero }}<span class="post-date">{{ .Date.Format "2 Jan 2006" }}</span>{{ end }}
     <a href="{{ .RelPermalink }}">{{ .Title }}</a>

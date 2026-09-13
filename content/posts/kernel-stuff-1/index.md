@@ -9,6 +9,7 @@ tags:
   - fundamentals
   - verifier
 toc: false
+inprogress: true
 ---
 
 # The goal

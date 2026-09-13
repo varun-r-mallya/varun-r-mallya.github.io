@@ -26,11 +26,6 @@ enableEmoji = true
     url = '/'
     weight = 10
   [[Languages.en-gb.menu.main]]
-    pageRef = "posts"
-    name = 'Posts'
-    url = '/posts/'
-    weight = 20
-  [[Languages.en-gb.menu.main]]
     pageRef = "talks"
     name = 'Talks'
     url = '/talks/'

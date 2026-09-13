@@ -1,6 +1,7 @@
 {{ define "main" }}
 <article>
 <h1>{{ .Title }}</h1>
+{{ if .Params.inprogress }}<p><span class="tag-inprogress">In Progress</span></p>{{ end }}
 {{ if or (eq .Section "posts") (eq .Section "gnome") }}
 <p class="meta">
 {{ if not .Date.IsZero }}{{ .Date.Format "2 Jan 2006" }}{{ end }}

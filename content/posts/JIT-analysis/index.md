@@ -8,6 +8,7 @@ tags:
   - Kernel
   - JIT
 toc: false
+inprogress: true
 ---
 
 I'll be analysing BPF JIT today.
