@@ -1,0 +1,505 @@
+# github.com/BurntSushi/locker v0.0.0-20171006230638-a6e239ea1c69
+## explicit
+github.com/BurntSushi/locker
+# github.com/alecthomas/chroma/v2 v2.15.0
+## explicit; go 1.19
+github.com/alecthomas/chroma/v2
+github.com/alecthomas/chroma/v2/formatters/html
+github.com/alecthomas/chroma/v2/lexers
+github.com/alecthomas/chroma/v2/styles
+# github.com/armon/go-radix v1.0.1-0.20221118154546-54df44f2176c
+## explicit
+github.com/armon/go-radix
+# github.com/bep/clocks v0.5.0
+## explicit; go 1.18
+github.com/bep/clocks
+# github.com/bep/debounce v1.2.0
+## explicit
+github.com/bep/debounce
+# github.com/bep/gitmap v1.6.0
+## explicit; go 1.18
+github.com/bep/gitmap
+# github.com/bep/goat v0.5.0
+## explicit; go 1.17
+github.com/bep/goat
+# github.com/bep/godartsass/v2 v2.3.2
+## explicit; go 1.21
+github.com/bep/godartsass/v2
+github.com/bep/godartsass/v2/internal/embeddedsass
+github.com/bep/godartsass/v2/internal/godartsasstesting
+# github.com/bep/golibsass v1.2.0
+## explicit; go 1.13
+github.com/bep/golibsass/internal/libsass
+github.com/bep/golibsass/libsass
+github.com/bep/golibsass/libsass/libsasserrors
+# github.com/bep/gowebp v0.3.0
+## explicit; go 1.16
+github.com/bep/gowebp/internal/libwebp
+github.com/bep/gowebp/libwebp
+github.com/bep/gowebp/libwebp/webpoptions
+# github.com/bep/helpers v0.5.0
+## explicit; go 1.18
+github.com/bep/helpers/envhelpers
+# github.com/bep/imagemeta v0.8.3
+## explicit; go 1.18
+github.com/bep/imagemeta
+# github.com/bep/lazycache v0.7.0
+## explicit; go 1.18
+github.com/bep/lazycache
+# github.com/bep/logg v0.4.0
+## explicit; go 1.18
+github.com/bep/logg
+github.com/bep/logg/handlers/multi
+# github.com/bep/mclib v1.20400.20402
+## explicit; go 1.19
+github.com/bep/mclib
+github.com/bep/mclib/internal
+# github.com/bep/overlayfs v0.9.2
+## explicit; go 1.18
+github.com/bep/overlayfs
+# github.com/bep/simplecobra v0.4.0
+## explicit; go 1.20
+github.com/bep/simplecobra
+# github.com/bep/tmc v0.5.1
+## explicit; go 1.12
+github.com/bep/tmc
+# github.com/cespare/xxhash/v2 v2.3.0
+## explicit; go 1.11
+github.com/cespare/xxhash/v2
+# github.com/clbanning/mxj/v2 v2.7.0
+## explicit; go 1.15
+github.com/clbanning/mxj/v2
+# github.com/cli/safeexec v1.0.1
+## explicit; go 1.15
+github.com/cli/safeexec
+# github.com/cpuguy83/go-md2man/v2 v2.0.4
+## explicit; go 1.11
+github.com/cpuguy83/go-md2man/v2/md2man
+# github.com/disintegration/gift v1.2.1
+## explicit
+github.com/disintegration/gift
+# github.com/dlclark/regexp2 v1.11.4
+## explicit; go 1.13
+github.com/dlclark/regexp2
+github.com/dlclark/regexp2/syntax
+# github.com/evanw/esbuild v0.24.2
+## explicit; go 1.13
+github.com/evanw/esbuild/internal/api_helpers
+github.com/evanw/esbuild/internal/ast
+github.com/evanw/esbuild/internal/bundler
+github.com/evanw/esbuild/internal/cache
+github.com/evanw/esbuild/internal/compat
+github.com/evanw/esbuild/internal/config
+github.com/evanw/esbuild/internal/css_ast
+github.com/evanw/esbuild/internal/css_lexer
+github.com/evanw/esbuild/internal/css_parser
+github.com/evanw/esbuild/internal/css_printer
+github.com/evanw/esbuild/internal/fs
+github.com/evanw/esbuild/internal/graph
+github.com/evanw/esbuild/internal/helpers
+github.com/evanw/esbuild/internal/js_ast
+github.com/evanw/esbuild/internal/js_lexer
+github.com/evanw/esbuild/internal/js_parser
+github.com/evanw/esbuild/internal/js_printer
+github.com/evanw/esbuild/internal/linker
+github.com/evanw/esbuild/internal/logger
+github.com/evanw/esbuild/internal/renamer
+github.com/evanw/esbuild/internal/resolver
+github.com/evanw/esbuild/internal/runtime
+github.com/evanw/esbuild/internal/sourcemap
+github.com/evanw/esbuild/internal/xxhash
+github.com/evanw/esbuild/pkg/api
+# github.com/fatih/color v1.18.0
+## explicit; go 1.17
+github.com/fatih/color
+# github.com/fortytw2/leaktest v1.3.0
+## explicit
+github.com/fortytw2/leaktest
+# github.com/frankban/quicktest v1.14.6
+## explicit; go 1.13
+github.com/frankban/quicktest
+# github.com/fsnotify/fsnotify v1.8.0
+## explicit; go 1.17
+github.com/fsnotify/fsnotify
+github.com/fsnotify/fsnotify/internal
+# github.com/getkin/kin-openapi v0.123.0
+## explicit; go 1.20
+github.com/getkin/kin-openapi/openapi3
+# github.com/ghodss/yaml v1.0.0
+## explicit
+github.com/ghodss/yaml
+# github.com/go-openapi/jsonpointer v0.20.2
+## explicit; go 1.19
+github.com/go-openapi/jsonpointer
+# github.com/go-openapi/swag v0.22.8
+## explicit; go 1.19
+github.com/go-openapi/swag
+# github.com/gobuffalo/flect v1.0.3
+## explicit; go 1.16
+github.com/gobuffalo/flect
+# github.com/gobwas/glob v0.2.3
+## explicit
+github.com/gobwas/glob
+github.com/gobwas/glob/compiler
+github.com/gobwas/glob/match
+github.com/gobwas/glob/syntax
+github.com/gobwas/glob/syntax/ast
+github.com/gobwas/glob/syntax/lexer
+github.com/gobwas/glob/util/runes
+github.com/gobwas/glob/util/strings
+# github.com/gohugoio/go-i18n/v2 v2.1.3-0.20230805085216-e63c13218d0e
+## explicit; go 1.16
+github.com/gohugoio/go-i18n/v2/i18n
+github.com/gohugoio/go-i18n/v2/internal
+github.com/gohugoio/go-i18n/v2/internal/plural
+# github.com/gohugoio/hashstructure v0.3.0
+## explicit; go 1.18
+github.com/gohugoio/hashstructure
+# github.com/gohugoio/httpcache v0.7.0
+## explicit; go 1.20
+github.com/gohugoio/httpcache
+# github.com/gohugoio/hugo-goldmark-extensions/extras v0.2.0
+## explicit; go 1.20
+github.com/gohugoio/hugo-goldmark-extensions/extras
+# github.com/gohugoio/hugo-goldmark-extensions/passthrough v0.3.0
+## explicit; go 1.20
+github.com/gohugoio/hugo-goldmark-extensions/passthrough
+# github.com/gohugoio/locales v0.14.0
+## explicit; go 1.16
+github.com/gohugoio/locales
+github.com/gohugoio/locales/currency
+# github.com/gohugoio/localescompressed v1.0.1
+## explicit; go 1.16
+github.com/gohugoio/localescompressed
+# github.com/gohugoio/testmodBuilder/mods v0.0.0-20190520184928-c56af20f2e95
+## explicit; go 1.12
+github.com/gohugoio/testmodBuilder/mods
+# github.com/google/go-cmp v0.6.0
+## explicit; go 1.13
+github.com/google/go-cmp/cmp
+github.com/google/go-cmp/cmp/cmpopts
+github.com/google/go-cmp/cmp/internal/diff
+github.com/google/go-cmp/cmp/internal/flags
+github.com/google/go-cmp/cmp/internal/function
+github.com/google/go-cmp/cmp/internal/value
+# github.com/gorilla/websocket v1.5.3
+## explicit; go 1.12
+github.com/gorilla/websocket
+# github.com/hairyhenderson/go-codeowners v0.7.0
+## explicit; go 1.22.0
+github.com/hairyhenderson/go-codeowners
+# github.com/hashicorp/golang-lru/v2 v2.0.7
+## explicit; go 1.18
+github.com/hashicorp/golang-lru/v2/internal
+github.com/hashicorp/golang-lru/v2/simplelru
+# github.com/inconshreveable/mousetrap v1.1.0
+## explicit; go 1.18
+github.com/inconshreveable/mousetrap
+# github.com/invopop/yaml v0.2.0
+## explicit; go 1.14
+github.com/invopop/yaml
+# github.com/jdkato/prose v1.2.1
+## explicit; go 1.13
+github.com/jdkato/prose/internal/util
+github.com/jdkato/prose/transform
+# github.com/josharian/intern v1.0.0
+## explicit; go 1.5
+github.com/josharian/intern
+# github.com/kr/pretty v0.3.1
+## explicit; go 1.12
+github.com/kr/pretty
+# github.com/kr/text v0.2.0
+## explicit
+github.com/kr/text
+# github.com/kylelemons/godebug v1.1.0
+## explicit; go 1.11
+github.com/kylelemons/godebug/diff
+# github.com/kyokomi/emoji/v2 v2.2.13
+## explicit; go 1.14
+github.com/kyokomi/emoji/v2
+# github.com/magefile/mage v1.15.0
+## explicit; go 1.12
+github.com/magefile/mage/mg
+github.com/magefile/mage/sh
+# github.com/mailru/easyjson v0.7.7
+## explicit; go 1.12
+github.com/mailru/easyjson/buffer
+github.com/mailru/easyjson/jlexer
+github.com/mailru/easyjson/jwriter
+# github.com/makeworld-the-better-one/dither/v2 v2.4.0
+## explicit; go 1.15
+github.com/makeworld-the-better-one/dither/v2
+# github.com/marekm4/color-extractor v1.2.1
+## explicit; go 1.13
+github.com/marekm4/color-extractor
+# github.com/mattn/go-colorable v0.1.13
+## explicit; go 1.15
+github.com/mattn/go-colorable
+# github.com/mattn/go-isatty v0.0.20
+## explicit; go 1.15
+github.com/mattn/go-isatty
+# github.com/mattn/go-runewidth v0.0.9
+## explicit; go 1.9
+github.com/mattn/go-runewidth
+# github.com/mitchellh/mapstructure v1.5.1-0.20231216201459-8508981c8b6c
+## explicit; go 1.14
+github.com/mitchellh/mapstructure
+# github.com/mohae/deepcopy v0.0.0-20170929034955-c48cc78d4826
+## explicit
+github.com/mohae/deepcopy
+# github.com/muesli/smartcrop v0.3.0
+## explicit
+github.com/muesli/smartcrop
+github.com/muesli/smartcrop/options
+# github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646
+## explicit
+# github.com/niklasfasching/go-org v1.7.0
+## explicit; go 1.18
+github.com/niklasfasching/go-org/org
+# github.com/olekukonko/tablewriter v0.0.5
+## explicit; go 1.12
+github.com/olekukonko/tablewriter
+# github.com/pbnjay/memory v0.0.0-20210728143218-7b4eea64cf58
+## explicit; go 1.16
+github.com/pbnjay/memory
+# github.com/pelletier/go-toml/v2 v2.2.3
+## explicit; go 1.21.0
+github.com/pelletier/go-toml/v2
+github.com/pelletier/go-toml/v2/internal/characters
+github.com/pelletier/go-toml/v2/internal/danger
+github.com/pelletier/go-toml/v2/internal/tracker
+github.com/pelletier/go-toml/v2/unstable
+# github.com/perimeterx/marshmallow v1.1.5
+## explicit; go 1.17
+github.com/perimeterx/marshmallow
+# github.com/pkg/browser v0.0.0-20240102092130-5ac0b6a4141c
+## explicit; go 1.14
+github.com/pkg/browser
+# github.com/pkg/errors v0.9.1
+## explicit
+github.com/pkg/errors
+# github.com/rogpeppe/go-internal v1.13.1
+## explicit; go 1.22
+github.com/rogpeppe/go-internal/diff
+github.com/rogpeppe/go-internal/fmtsort
+github.com/rogpeppe/go-internal/imports
+github.com/rogpeppe/go-internal/internal/misspell
+github.com/rogpeppe/go-internal/internal/os/execpath
+github.com/rogpeppe/go-internal/internal/syscall/windows
+github.com/rogpeppe/go-internal/internal/syscall/windows/sysdll
+github.com/rogpeppe/go-internal/lockedfile
+github.com/rogpeppe/go-internal/lockedfile/internal/filelock
+github.com/rogpeppe/go-internal/par
+github.com/rogpeppe/go-internal/testenv
+github.com/rogpeppe/go-internal/testscript
+github.com/rogpeppe/go-internal/testscript/internal/pty
+github.com/rogpeppe/go-internal/txtar
+# github.com/russross/blackfriday/v2 v2.1.0
+## explicit
+github.com/russross/blackfriday/v2
+# github.com/sanity-io/litter v1.5.5
+## explicit; go 1.16
+github.com/sanity-io/litter
+# github.com/spf13/afero v1.11.0
+## explicit; go 1.19
+github.com/spf13/afero
+github.com/spf13/afero/internal/common
+github.com/spf13/afero/mem
+# github.com/spf13/cast v1.7.1
+## explicit; go 1.19
+github.com/spf13/cast
+# github.com/spf13/cobra v1.8.1
+## explicit; go 1.15
+github.com/spf13/cobra
+github.com/spf13/cobra/doc
+# github.com/spf13/fsync v0.10.1
+## explicit; go 1.16
+github.com/spf13/fsync
+# github.com/spf13/pflag v1.0.5
+## explicit; go 1.12
+github.com/spf13/pflag
+# github.com/tdewolff/minify/v2 v2.20.37
+## explicit; go 1.18
+github.com/tdewolff/minify/v2
+github.com/tdewolff/minify/v2/css
+github.com/tdewolff/minify/v2/html
+github.com/tdewolff/minify/v2/js
+github.com/tdewolff/minify/v2/json
+github.com/tdewolff/minify/v2/svg
+github.com/tdewolff/minify/v2/xml
+# github.com/tdewolff/parse/v2 v2.7.15
+## explicit; go 1.13
+github.com/tdewolff/parse/v2
+github.com/tdewolff/parse/v2/buffer
+github.com/tdewolff/parse/v2/css
+github.com/tdewolff/parse/v2/html
+github.com/tdewolff/parse/v2/js
+github.com/tdewolff/parse/v2/json
+github.com/tdewolff/parse/v2/strconv
+github.com/tdewolff/parse/v2/xml
+# github.com/tetratelabs/wazero v1.8.2
+## explicit; go 1.21
+github.com/tetratelabs/wazero
+github.com/tetratelabs/wazero/api
+github.com/tetratelabs/wazero/experimental
+github.com/tetratelabs/wazero/experimental/sys
+github.com/tetratelabs/wazero/imports/wasi_snapshot_preview1
+github.com/tetratelabs/wazero/internal/descriptor
+github.com/tetratelabs/wazero/internal/engine/interpreter
+github.com/tetratelabs/wazero/internal/engine/wazevo
+github.com/tetratelabs/wazero/internal/engine/wazevo/backend
+github.com/tetratelabs/wazero/internal/engine/wazevo/backend/isa/amd64
+github.com/tetratelabs/wazero/internal/engine/wazevo/backend/isa/arm64
+github.com/tetratelabs/wazero/internal/engine/wazevo/backend/regalloc
+github.com/tetratelabs/wazero/internal/engine/wazevo/frontend
+github.com/tetratelabs/wazero/internal/engine/wazevo/ssa
+github.com/tetratelabs/wazero/internal/engine/wazevo/wazevoapi
+github.com/tetratelabs/wazero/internal/expctxkeys
+github.com/tetratelabs/wazero/internal/filecache
+github.com/tetratelabs/wazero/internal/fsapi
+github.com/tetratelabs/wazero/internal/ieee754
+github.com/tetratelabs/wazero/internal/internalapi
+github.com/tetratelabs/wazero/internal/leb128
+github.com/tetratelabs/wazero/internal/moremath
+github.com/tetratelabs/wazero/internal/platform
+github.com/tetratelabs/wazero/internal/sock
+github.com/tetratelabs/wazero/internal/sys
+github.com/tetratelabs/wazero/internal/sysfs
+github.com/tetratelabs/wazero/internal/u32
+github.com/tetratelabs/wazero/internal/u64
+github.com/tetratelabs/wazero/internal/version
+github.com/tetratelabs/wazero/internal/wasip1
+github.com/tetratelabs/wazero/internal/wasm
+github.com/tetratelabs/wazero/internal/wasm/binary
+github.com/tetratelabs/wazero/internal/wasmdebug
+github.com/tetratelabs/wazero/internal/wasmruntime
+github.com/tetratelabs/wazero/sys
+# github.com/yuin/goldmark v1.7.8
+## explicit; go 1.19
+github.com/yuin/goldmark
+github.com/yuin/goldmark/ast
+github.com/yuin/goldmark/extension
+github.com/yuin/goldmark/extension/ast
+github.com/yuin/goldmark/parser
+github.com/yuin/goldmark/renderer
+github.com/yuin/goldmark/renderer/html
+github.com/yuin/goldmark/text
+github.com/yuin/goldmark/util
+# github.com/yuin/goldmark-emoji v1.0.4
+## explicit; go 1.15
+github.com/yuin/goldmark-emoji
+github.com/yuin/goldmark-emoji/ast
+github.com/yuin/goldmark-emoji/definition
+# go.uber.org/automaxprocs v1.5.3
+## explicit; go 1.18
+go.uber.org/automaxprocs/internal/cgroups
+go.uber.org/automaxprocs/internal/runtime
+go.uber.org/automaxprocs/maxprocs
+# golang.org/x/crypto v0.32.0
+## explicit; go 1.20
+golang.org/x/crypto/pbkdf2
+# golang.org/x/exp v0.0.0-20221031165847-c99f073a8326
+## explicit; go 1.18
+golang.org/x/exp/maps
+# golang.org/x/image v0.22.0
+## explicit; go 1.18
+golang.org/x/image/bmp
+golang.org/x/image/ccitt
+golang.org/x/image/draw
+golang.org/x/image/font
+golang.org/x/image/font/gofont/goregular
+golang.org/x/image/font/opentype
+golang.org/x/image/font/sfnt
+golang.org/x/image/math/f64
+golang.org/x/image/math/fixed
+golang.org/x/image/riff
+golang.org/x/image/tiff
+golang.org/x/image/tiff/lzw
+golang.org/x/image/vector
+golang.org/x/image/vp8
+golang.org/x/image/vp8l
+golang.org/x/image/webp
+# golang.org/x/mod v0.22.0
+## explicit; go 1.22.0
+golang.org/x/mod/internal/lazyregexp
+golang.org/x/mod/module
+golang.org/x/mod/semver
+# golang.org/x/net v0.34.0
+## explicit; go 1.18
+golang.org/x/net/html
+golang.org/x/net/html/atom
+golang.org/x/net/idna
+# golang.org/x/sync v0.10.0
+## explicit; go 1.18
+golang.org/x/sync/errgroup
+golang.org/x/sync/semaphore
+# golang.org/x/sys v0.29.0
+## explicit; go 1.18
+golang.org/x/sys/unix
+golang.org/x/sys/windows
+# golang.org/x/text v0.21.0
+## explicit; go 1.18
+golang.org/x/text/collate
+golang.org/x/text/encoding
+golang.org/x/text/encoding/charmap
+golang.org/x/text/encoding/internal
+golang.org/x/text/encoding/internal/identifier
+golang.org/x/text/internal/colltab
+golang.org/x/text/internal/language
+golang.org/x/text/internal/language/compact
+golang.org/x/text/internal/tag
+golang.org/x/text/language
+golang.org/x/text/runes
+golang.org/x/text/secure/bidirule
+golang.org/x/text/transform
+golang.org/x/text/unicode/bidi
+golang.org/x/text/unicode/norm
+# golang.org/x/tools v0.29.0
+## explicit; go 1.22.0
+golang.org/x/tools/txtar
+# google.golang.org/protobuf v1.35.2
+## explicit; go 1.21
+google.golang.org/protobuf/encoding/prototext
+google.golang.org/protobuf/encoding/protowire
+google.golang.org/protobuf/internal/descfmt
+google.golang.org/protobuf/internal/descopts
+google.golang.org/protobuf/internal/detrand
+google.golang.org/protobuf/internal/editiondefaults
+google.golang.org/protobuf/internal/encoding/defval
+google.golang.org/protobuf/internal/encoding/messageset
+google.golang.org/protobuf/internal/encoding/tag
+google.golang.org/protobuf/internal/encoding/text
+google.golang.org/protobuf/internal/errors
+google.golang.org/protobuf/internal/filedesc
+google.golang.org/protobuf/internal/filetype
+google.golang.org/protobuf/internal/flags
+google.golang.org/protobuf/internal/genid
+google.golang.org/protobuf/internal/impl
+google.golang.org/protobuf/internal/order
+google.golang.org/protobuf/internal/pragma
+google.golang.org/protobuf/internal/set
+google.golang.org/protobuf/internal/strs
+google.golang.org/protobuf/internal/version
+google.golang.org/protobuf/proto
+google.golang.org/protobuf/reflect/protoreflect
+google.golang.org/protobuf/reflect/protoregistry
+google.golang.org/protobuf/runtime/protoiface
+google.golang.org/protobuf/runtime/protoimpl
+# gopkg.in/yaml.v2 v2.4.0
+## explicit; go 1.15
+gopkg.in/yaml.v2
+# gopkg.in/yaml.v3 v3.0.1
+## explicit
+gopkg.in/yaml.v3
+# howett.net/plist v1.0.0
+## explicit; go 1.12
+howett.net/plist
+# rsc.io/qr v0.2.0
+## explicit
+rsc.io/qr
+rsc.io/qr/coding
+rsc.io/qr/gf256
+# software.sslmate.com/src/go-pkcs12 v0.2.0
+## explicit; go 1.15
+software.sslmate.com/src/go-pkcs12
+software.sslmate.com/src/go-pkcs12/internal/rc2
