@@ -24,7 +24,9 @@ I contributed to [_sysprof_](https://gitlab.gnome.org/GNOME/sysprof) as part of 
 Libp2p and was a part of the Protocol Labs Dev guild for two continuous cohorts.
 I've won various hackathons spanning web3, security, AI and so on.
 You can find my work on [_GitHub_](https://github.com/varun-r-mallya) and [GNOME's GitLab](https://gitlab.gnome.org/varunrmallya).
+
 Also on [lore.kernel.org](https://lore.kernel.org/all/?q=Varun+R+Mallya).
+
 I'm a member of [_SDSLabs_](https://sdslabs.co), where I hang out with my friends.  
 
 ## Contact Me
