@@ -3,4 +3,5 @@
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} &middot; {{ site.Title }}{{ end }}</title>
 {{ with .Description | default site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
 <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+<link rel="stylesheet" href="{{ "css/chroma.css" | relURL }}">
 {{ with .OutputFormats.Get "rss" }}<link rel="alternate" type="application/rss+xml" href="{{ .Permalink }}" title="{{ site.Title }}">{{ end }}
