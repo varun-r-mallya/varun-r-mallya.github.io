@@ -31,10 +31,20 @@ enableEmoji = true
     url = '/posts/'
     weight = 20
   [[Languages.en-gb.menu.main]]
+    pageRef = "talks"
+    name = 'Talks'
+    url = '/talks/'
+    weight = 30
+  [[Languages.en-gb.menu.main]]
+    pageRef = "publications"
+    name = 'Publications'
+    url = '/publications/'
+    weight = 40
+  [[Languages.en-gb.menu.main]]
     pageRef = "about"
     name = 'About'
     url = '/about/'
-    weight = 30
+    weight = 50
 
 [Languages.en-gb.params]
   sitename = "mallya's blog"
