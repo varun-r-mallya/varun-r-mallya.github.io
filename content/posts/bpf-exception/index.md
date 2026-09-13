@@ -257,4 +257,91 @@ I like to think of things in terms of CFGs that somehow morph into flowcharts in
 
 I am going to treat the verifier as a blackbox right now though, since I don't have to make any changes inside it. The neat part about this is that I still get to see what guarantees the verifier provides to me so that I can JIT accurately.
 
-The verifier first sees a btf_decl_tag attribute in the sk
+So the first thing I did was this:
+```c
+
+diff --git a/arch/riscv/net/bpf_jit_comp64.c b/arch/riscv/net/bpf_jit_comp64.c
+index c03c1de16b79..57446a0a1b5d 100644
+--- a/arch/riscv/net/bpf_jit_comp64.c
++++ b/arch/riscv/net/bpf_jit_comp64.c
+@@ -2157,3 +2157,9 @@ bool bpf_jit_supports_fsession(void)
+ {
+ 	return true;
+ }
++
++bool bpf_jit_supports_exceptions(void)
++{
++	/* frame pointer unwinding should work on RISC-V to work */
++	return IS_ENABLED(CONFIG_FRAME_POINTER);
++}
+```
+
+Then, I am looking at the arm64 `arch_bpf_stack-walk`function, I see that it depends on the `kunwind_stack_walk` function as well as `arch_bpf_unwind_consume_entry`. The latter function depends on no other functions. The former on the other hand, 
+```c 
+
+static __always_inline int
+kunwind_stack_walk(kunwind_consume_fn consume_state,
+		   void *cookie, struct task_struct *task,
+		   struct pt_regs *regs)
+{
+	struct stack_info stacks[] = {
+		stackinfo_get_task(task),
+		STACKINFO_CPU(irq),
+		STACKINFO_CPU(overflow),
+#if defined(CONFIG_ARM_SDE_INTERFACE)
+		STACKINFO_SDEI(normal),
+		STACKINFO_SDEI(critical),
+#endif
+#ifdef CONFIG_EFI
+		STACKINFO_EFI,
+#endif
+	};
+	struct kunwind_state state = {
+		.common = {
+			.stacks = stacks,
+			.nr_stacks = ARRAY_SIZE(stacks),
+		},
+	};
+
+	if (regs) {
+		if (task != current)
+			return -EINVAL;
+		kunwind_init_from_regs(&state, regs);
+	} else if (task == current) {
+		kunwind_init_from_caller(&state);
+	} else {
+		kunwind_init_from_task(&state, task);
+	}
+
+	return do_kunwind(&state, consume_state, cookie);
+}
+```
+This is apparently equivalent to the walk_stackframe function in RISC-V, but we will investigate.
+
+Right now, on a sidenote, we will compare:
+```c
+noinline noinstr void arch_stack_walk(stack_trace_consume_fn consume_entry,
+			      void *cookie, struct task_struct *task,
+			      struct pt_regs *regs)
+{
+	struct kunwind_consume_entry_data data = {
+		.consume_entry = consume_entry,
+		.cookie = cookie,
+	};
+
+	kunwind_stack_walk(arch_kunwind_consume_entry, &data, task, regs);
+}
+// This is arm64
+```
+
+and this is RISC-V:
+```c 
+
+noinline noinstr void arch_stack_walk(stack_trace_consume_fn consume_entry, void *cookie,
+		     struct task_struct *task, struct pt_regs *regs)
+{
+	walk_stackframe(task, regs, consume_entry, cookie);
+}
+
+```
+On comparing arguments, since they are similar functions to exactly what we want, I see `consume_entry`, `cookie`, `task` and `regs` on both and then on the internal functions, I see that `task`, `regs`, `consume_entry`, `cookie` and then the function that is passed:
